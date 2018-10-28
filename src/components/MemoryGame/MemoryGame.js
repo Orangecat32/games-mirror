@@ -68,8 +68,8 @@ export class MemoryGame extends React.Component {
     }
   }
 
-  render() {
-    const cards = (this.state.cards || []).map(card => {
+  buildCardList() {
+    return (this.state.cards || []).map(card => {
       const isMatch = this.isMatch(card);
       const isFlipped = this.isFlipped(card);
       const isUnmatched = this.isUnmatched(card);
@@ -87,7 +87,9 @@ export class MemoryGame extends React.Component {
           </div>
         </div>);
     });
+  }
 
+  render() {
     return (
       <div className="MemoryGameContainer">
         <div className="InnerGame">
@@ -104,7 +106,7 @@ export class MemoryGame extends React.Component {
             <Switch checked={this.state.showAll} label="Show All" onChange={() => this.setState({showAll: !this.state.showAll})}/>
           </div>
           <div className="GameBoard">
-            {cards}
+            {this.buildCardList()}
           </div>
          
         </div>
