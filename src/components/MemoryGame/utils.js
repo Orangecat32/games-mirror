@@ -1,14 +1,13 @@
 
+export const iconNames = ['time', 'grid', 'wrench','cog', 'flag','star','airplane','key','globe','dollar','flash','heart'];
+export const ICON_COUNT = 12; 
 
-export const ICON_COUNT=12;
-
-
+// build the cards array
 export const createCards = () => {
-  // build the cards array
   let cards = [];
   for(let i=0, n = 0; i < ICON_COUNT; i++){
-    let c1 = {index:n++, name:iconNames[i], flipped: false};
-    let c2 = {index:n++, name:iconNames[i], flipped: false};
+    let c1 = {index:n++, name:iconNames[i]};
+    let c2 = {index:n++, name:iconNames[i]};
     cards.push(c1);
     cards.push(c2);
   }
@@ -20,25 +19,28 @@ export const createCards = () => {
     randomCards[randomIndices[i] - 1] = cards[i];
   }
 
-  console.log(randomCards);
   return randomCards;
 }
 
-export const setFlipState = (cards, flip) => {
-  cards.map(c => {
-    let cc = {...c};
-    cc.flipped = flip;
-    return cc;
-  });
+// matching of cards is based on the  image  name
+export const isMatchedCard = (iconNames, card) => (iconNames || []).some(name => name === card.name);
+
+// flipped state is based on the card index
+export const isFlippedCard = (flippedIndices, card) => (flippedIndices || []).some(index => index === card.index);
+
+//  return true if this is the card that is the second flip and it is not a match for the first
+export const isUnmatchedCard = (cards, flippedIndices,card) => {
+  if(flippedIndices.length === 2 && card.index === flippedIndices[1]) {
+    const j = flippedIndices[0];
+    const k = flippedIndices[1];
+    const name1 = cards.find(c => c.index === j).name;
+    const name2 = cards.find(c => c.index === k).name;
+    return name1 !== name2;
+  } 
+
+  return false;
 }
 
-export const hideUnmatched = (cards) => {
-  cards.map(c => {
-    let cc = {...c};
-    cc.flipped = c.matched;
-    return cc;
-  });
-}
 
 // return array of unique numbers between 1 and length (inclusive) in random order
 function randomArray(length){
@@ -52,6 +54,6 @@ function randomArray(length){
   return arr;
 }
 
-export const iconNames = ['time', 'grid', 'person','cog', 'flag','star','airplane','key','globe','dollar','flash','heart'];
+
 
 

@@ -2,22 +2,11 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Button } from "@blueprintjs/core";
 import {MemoryGame} from "./components/MemoryGame/MemoryGame.js"
-
-
-
-import { Alignment, Classes, H3, H5, InputGroup, Navbar, Switch, Tab, TabId, Tabs ,
-  NavbarDivider,
-  NavbarGroup,
-  NavbarHeading} from "@blueprintjs/core";
-  import { Icon, Intent } from "@blueprintjs/core";
-import { IconNames } from "@blueprintjs/icons";
-import { Example, handleBooleanChange, IExampleProps } from "@blueprintjs/docs-theme";
-
+import { Alignment, Classes, Navbar, NavbarDivider,  NavbarGroup,  NavbarHeading} from "@blueprintjs/core";
 import './App.scss';
 
 const MEMORY_GAME = 'Memory';
 const BOWLING_GAME = 'Bowling';
-
 
 class App extends Component {
   constructor(props) {

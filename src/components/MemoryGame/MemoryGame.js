@@ -1,10 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types'; 
-import { Icon, Button, Switch ,Classes } from "@blueprintjs/core";
-
-//import styles from './MemoryGame.scss';  // why did this not work? webpack issue?
+import { Icon, Button, Switch } from "@blueprintjs/core";
+import {createCards, ICON_COUNT, isMatchedCard, isFlippedCard, isUnmatchedCard } from './utils.js';
 import './MemoryGame.scss';
-import {createCards, ICON_COUNT } from './utils.js';
 
 export class MemoryGame extends React.Component {
   constructor(props) {
@@ -17,33 +15,14 @@ export class MemoryGame extends React.Component {
     this.restart();
   }
 
+  // note: this function modifies state
   restart() {
     this.setState({cards: createCards(), matchedIcons: [], flippedIndices: [], showAll:false});
   }
 
-  isMatch(card) {
-    return (this.state.matchedIcons || []).some(name => name === card.name);
-  }
-
-  isFlipped(card) {
-    return (this.state.flippedIndices || []).some(name => name === card.index);
-  }
-
-  //  return true if this is the card that is the second flip and it is not a match for the first
-  isUnmatched(card) {
-    if(this.state.flippedIndices.length === 2 && card.index === this.state.flippedIndices[1]) {
-      const j = this.state.flippedIndices[0];
-      const k = this.state.flippedIndices[1];
-      const name1 = this.state.cards.find(c => c.index === j).name;
-      const name2 = this.state.cards.find(c => c.index === k).name;
-      return name1 !== name2;
-    } 
-
-    return false;
-  }
-
+  // note: this function modifies state
   clickCard(card) {
-    if(this.isFlipped(card) || this.isMatch(card)) {
+    if(isFlippedCard(this.state.flippedIndices, card) || isMatchedCard(this.state.matchedIcons, card)) {
       return; //  do nothing if user clicks on an exposed card
     }
 
@@ -68,15 +47,15 @@ export class MemoryGame extends React.Component {
     }
   }
 
-  buildCardList() {
+  // returns DOM elements for the cards
+  buildCardDisplay() {
     return (this.state.cards || []).map(card => {
-      const isMatch = this.isMatch(card);
-      const isFlipped = this.isFlipped(card);
-      const isUnmatched = this.isUnmatched(card);
+      const isMatch = isMatchedCard(this.state.matchedIcons, card);
+      const isFlipped = isFlippedCard(this.state.flippedIndices, card);
+      const isUnmatched = isUnmatchedCard(this.state.cards, this.state.flippedIndices, card);
     
       return (
-        <div>
-         
+        <div> 
           <div key={card.index} onClick={() => this.clickCard(card)}>
             <MemoryCard 
               showAll={this.state.showAll}
@@ -106,9 +85,8 @@ export class MemoryGame extends React.Component {
             <Switch checked={this.state.showAll} label="Show All" onChange={() => this.setState({showAll: !this.state.showAll})}/>
           </div>
           <div className="GameBoard">
-            {this.buildCardList()}
+            {this.buildCardDisplay()}
           </div>
-         
         </div>
       </div>
     );
@@ -130,8 +108,5 @@ const MemoryCard: React.SFC = (props) => {
     </div>
     )
 };
-
-
-// <div className={`${styles.layout} `}> //should have worked??
 
 export default MemoryGame;
