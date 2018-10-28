@@ -1,0 +1,56 @@
+
+.MemoryGameContainer {
+    display: flex;
+    flex: 1 1;
+    flex-direction: row;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    background-color: rgb(255, 0, 0);
+  }
+
+  .MemoryGameControls {
+    height:60px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .GameBoard {
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    background-color: tan;
+  }
+
+  .memoryCard {
+      width: 60px;
+      height: 60px;
+      border: 1px solid gray;
+      margin: 6px;
+      border-radius: 3px;
+      background-color: beige;
+      display: flex;
+  } 
+
+  .isMatched {
+    background-color: pink;
+  }
+
+  .isFlipped {
+    border: 2px solid green;
+  }
+
+  .isUnmatched {
+    background-color: red;
+  }
+
+  .cardIcon {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex:1;
+  }

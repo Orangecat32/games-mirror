@@ -1,28 +1,75 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import PropTypes from 'prop-types';
+import { Button } from "@blueprintjs/core";
+import {MemoryGame} from "./components/MemoryGame/MemoryGame.js"
+
+
+
+import { Alignment, Classes, H3, H5, InputGroup, Navbar, Switch, Tab, TabId, Tabs ,
+  NavbarDivider,
+  NavbarGroup,
+  NavbarHeading} from "@blueprintjs/core";
+  import { Icon, Intent } from "@blueprintjs/core";
+import { IconNames } from "@blueprintjs/icons";
+import { Example, handleBooleanChange, IExampleProps } from "@blueprintjs/docs-theme";
+
+import './App.scss';
+
+const MEMORY_GAME = 'Memory';
+const BOWLING_GAME = 'Bowling';
+
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+     game: MEMORY_GAME
+  };
+  }
+
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <Navbar>
+          <NavbarGroup align={Alignment.LEFT}>
+            <NavbarHeading>Game Room</NavbarHeading>
+            <NavbarDivider />
+            <Button 
+              className={Classes.MINIMAL} 
+              active={this.state.game === MEMORY_GAME}
+              text={MEMORY_GAME} 
+              onClick={()=> this.setState({game: MEMORY_GAME})} />
+            <Button 
+              className={Classes.MINIMAL} 
+              active={this.state.game === BOWLING_GAME}
+              text={BOWLING_GAME} 
+              onClick={()=> this.setState({game: BOWLING_GAME})} />
+          </NavbarGroup>
+        </Navbar>
+        <div className="GameContainer">
+          {this.state.game === MEMORY_GAME &&
+            <div>
+             <MemoryGame />
+            </div>
+
+          }
+           {this.state.game === BOWLING_GAME &&
+            <div className="ConstructionContainer">
+             <UnderConstruction text={`${this.state.game} is under construction`} />
+            </div>
+          }
+        
+        </div>   
       </div>
     );
   }
 }
 
+const UnderConstruction: React.SFC = (props) => (
+  <div>
+   {props.text}
+  </div>
+);
+
 export default App;
+
