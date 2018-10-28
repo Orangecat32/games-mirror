@@ -1,11 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types'; 
-import { Icon, Button, Switch  } from "@blueprintjs/core";
+import { Icon, Button, Switch ,Classes } from "@blueprintjs/core";
 
 //import styles from './MemoryGame.scss';  // why did this not work? webpack issue?
 import './MemoryGame.scss';
-import {createCards, setFlipState} from './utils.js';
-
+import {createCards, ICON_COUNT } from './utils.js';
 
 export class MemoryGame extends React.Component {
   constructor(props) {
@@ -20,14 +19,6 @@ export class MemoryGame extends React.Component {
 
   restart() {
     this.setState({cards: createCards(), matchedIcons: [], flippedIndices: [], showAll:false});
-  }
-
-  showall() {
-    this.setState({cards: setFlipState(this.state.cards, true)});
-  }
-
-  hideAll() {
-    this.setState({cards: setFlipState(this.state.cards, false)});
   }
 
   isMatch(card) {
@@ -99,13 +90,24 @@ export class MemoryGame extends React.Component {
 
     return (
       <div className="MemoryGameContainer">
-        <div className="MemoryGameControls">
-            <Button text="Restart" onClick={() => this.restart()}/>
+        <div className="InnerGame">
+          <div className="GameDescription">
+            Object of the game: Try to match the images 
+          </div> 
+          { this.state.matchedIcons.length === ICON_COUNT &&
+            <div className="GameOver">
+              GAME OVER!
+            </div>
+          }
+          <div className="MemoryGameControls">
+            <Button text="Restart" onClick={() => this.restart()} minimal />
             <Switch checked={this.state.showAll} label="Show All" onChange={() => this.setState({showAll: !this.state.showAll})}/>
+          </div>
+          <div className="GameBoard">
+            {cards}
+          </div>
+         
         </div>
-        <div className="GameBoard">
-          {cards}
-        </div>
       </div>
     );
   }
@@ -115,12 +117,12 @@ export class MemoryGame extends React.Component {
 
 const MemoryCard: React.SFC = (props) => {
   const showIcon = props.isMatch || props.isFlipped || props.showAll;
-  const cs = `memoryCard ${props.isMatch === true ? 'isMatched' : ''}  ${props.isFlipped ? 'isFlipped' : ''} ${props.isUnmatched ? 'isUnmatched' : ''}`;
+  const cn = `memoryCard ${props.isMatch === true ? 'isMatched' : ''}  ${props.isFlipped ? 'isFlipped' : ''} ${props.isUnmatched ? 'isUnmatched' : ''}`;
   return (
-    <div className={cs}>
+    <div className={cn}>
       {showIcon &&
         <div className="cardIcon">
-          <Icon icon={props.name} />
+          <Icon icon={props.name} iconSize={35}/>
         </div>
       }
     </div>
