@@ -1,7 +1,8 @@
 import React from 'react';
-import PropTypes from 'prop-types'; 
+
 import { Icon, Button, Switch } from "@blueprintjs/core";
-import {createCards, ICON_COUNT, isMatchedCard, isFlippedCard, isUnmatchedCard } from './utils.js';
+import {createCards, isMatchedCard, isFlippedCard, isUnmatchedCard } from './utils.js';
+import {gameDescription, ICON_COUNT} from './constants';
 import './MemoryGame.scss';
 
 export class MemoryGame extends React.Component {
@@ -95,7 +96,6 @@ export class MemoryGame extends React.Component {
 }
 
 
-
 const MemoryCard = (props) => {
   const showIcon = props.isMatch || props.isFlipped || props.showAll;
   const cn = `memoryCard ${props.isMatch === true ? 'isMatched' : ''}  ${props.isFlipped ? 'isFlipped' : ''} ${props.isUnmatched ? 'isUnmatched' : ''}`;
@@ -109,26 +109,6 @@ const MemoryCard = (props) => {
     </div>
     )
 };
-
-
-function gameDescription() {
-  return (
-    <div>
-      <h3>Game Rules:</h3>
-      <ul>
-        <li>At the start of the game, the player is presented with 24 facedown cards.</li>
-        <li>On the reverse side of every card is an icon. There are twelve unique icons.</li>
-        <li>Play begins with the player clicking a card to reveal the icon.</li>
-        <li>The player then clicks another card to reveal a second icon.</li>
-        <li>If the icons match, the matched cards are grayed.</li>
-        <li>If the icons do not match, the cards are turned facedown.</li>
-        <li>The game continues until there are no cards left to match.</li>
-        <li>Alternatively, play can begin with the cards faceup (using the 'Show All' switch) then turning them facedown after you have memorized the icon positions. </li>
-        </ul>
-    </div>);
-};
-
-
 
 
 export default MemoryGame;

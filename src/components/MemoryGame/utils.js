@@ -1,6 +1,4 @@
-
-export const iconNames = ['time', 'grid', 'wrench','cog', 'flag','star','airplane','key','globe','dollar','flash','heart'];
-export const ICON_COUNT = 12; 
+import {ICON_COUNT, iconNames} from './constants';
 
 // build the cards array
 export const createCards = () => {
@@ -27,7 +25,7 @@ export const isMatchedCard = (iconNames, card) => (iconNames || []).some(name =>
 export const isFlippedCard = (flippedIndices, card) => (flippedIndices || []).some(index => index === card.index);
 
 //  return true if this is the card that is the second flip and it is not a match for the first
-export const isUnmatchedCard = (cards, flippedIndices,card) => {
+export const isUnmatchedCard = (cards, flippedIndices, card) => {
   if(flippedIndices.length === 2 && card.index === flippedIndices[1]) {
     const j = flippedIndices[0];
     const k = flippedIndices[1];
