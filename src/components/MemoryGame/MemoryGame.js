@@ -12,15 +12,14 @@ export class MemoryGame extends React.Component {
 
   componentWillMount(props){
     console.log('mount');
-    this.restart();
+    this.initializeState();
   }
 
-  // note: this function modifies state
-  restart() {
+   initializeState() {
     this.setState({cards: createCards(), matchedIcons: [], flippedIndices: []});
   }
 
-  // note: this function modifies state
+  // this function modifies state after user clicks a card
   clickCard(card) {
     if(isFlippedCard(this.state.flippedIndices, card) || isMatchedCard(this.state.matchedIcons, card)) {
       return; //  do nothing if user clicks on an exposed card
@@ -47,7 +46,7 @@ export class MemoryGame extends React.Component {
     }
   }
 
-  // returns DOM elements for the cards.  modifies state
+  // returns card elements for rendering
   buildCardDisplay() {
     return (this.state.cards || []).map(card => {
       const isMatch = isMatchedCard(this.state.matchedIcons, card);
@@ -80,7 +79,7 @@ export class MemoryGame extends React.Component {
             </div>
           }
           <div className="MemoryGameControls">
-            <Button text="Restart" onClick={() => this.restart()} />
+            <Button text="Restart" onClick={() => this.initializeState()} />
             <Switch checked={this.state.showAll} label="Show All" style={{marginTop:'6px'}}
               onChange={() => this.setState({showAll: !this.state.showAll})}/>
           </div>
@@ -124,8 +123,8 @@ function gameDescription() {
         <li>If the icons match, the matched cards are grayed.</li>
         <li>If the icons do not match, the cards are turned facedown.</li>
         <li>The game continues until there are no cards left to match.</li>
-        <li>An alternative way to play is by beginning with the cards faceup (using the 'Show All' switch) then turning them facedown after you have memorized the icon positions. </li>
-      </ul>
+        <li>Alternatively, play can begin with the cards faceup (using the 'Show All' switch) then turning them facedown after you have memorized the icon positions. </li>
+        </ul>
     </div>);
 };
 

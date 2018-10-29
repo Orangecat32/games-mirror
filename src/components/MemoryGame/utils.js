@@ -5,11 +5,9 @@ export const ICON_COUNT = 12;
 // build the cards array
 export const createCards = () => {
   let cards = [];
-  for(let i=0, n = 0; i < ICON_COUNT; i++){
-    let c1 = {index:n++, name:iconNames[i]};
-    let c2 = {index:n++, name:iconNames[i]};
-    cards.push(c1);
-    cards.push(c2);
+  for(let i = 0, n = 0; i < ICON_COUNT; i++){
+    cards.push({index:n++, name:iconNames[i]});
+    cards.push({index:n++, name:iconNames[i]});
   }
 
   // shuffle the cards
