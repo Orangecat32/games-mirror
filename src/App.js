@@ -54,7 +54,7 @@ class App extends Component {
   }
 }
 
-const UnderConstruction: React.SFC = (props) => (
+const UnderConstruction = (props) => (
   <div>
    {props.text}
   </div>
