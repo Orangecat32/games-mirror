@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-//import PropTypes from 'prop-types';
 import { Button } from "@blueprintjs/core";
 import {MemoryGame} from "./components/MemoryGame/MemoryGame.js"
 import { Alignment, Classes, Navbar, NavbarDivider,  NavbarGroup,  NavbarHeading} from "@blueprintjs/core";
-import './App.scss';
+import styles from './App.scss';
+
 
 const MEMORY_GAME = 'Memory';
 const BOWLING_GAME = 'Bowling';
@@ -18,7 +18,7 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
+      <div className={styles.app}>
         <Navbar>
           <NavbarGroup align={Alignment.LEFT}>
             <NavbarHeading>Game Room</NavbarHeading>
@@ -35,7 +35,7 @@ class App extends Component {
               onClick={()=> this.setState({game: BOWLING_GAME})} />
           </NavbarGroup>
         </Navbar>
-        <div className="GameContainer">
+        <div className={styles.gameContainer}>
           {this.state.game === MEMORY_GAME &&
             <div>
              <MemoryGame />
@@ -43,7 +43,7 @@ class App extends Component {
 
           }
            {this.state.game === BOWLING_GAME &&
-            <div className="ConstructionContainer">
+            <div className={styles.constructionContainer}>
              <UnderConstruction text={`${this.state.game} is under construction`} />
             </div>
           }
