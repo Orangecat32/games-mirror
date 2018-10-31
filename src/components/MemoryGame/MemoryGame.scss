@@ -1,5 +1,5 @@
 
-  .MemoryGameContainer {
+  .memoryGameContainer {
     display: flex;
     flex: 1 1;
     flex-direction: column;
@@ -11,20 +11,46 @@
     min-width: 525px;
   }
 
-  .InnerGame {
-    display:flex;
-    flex-direction: column;
-    flex:1;
-    width:100%;
-  }
-
-  
-  .GameBoard {
+  .gameBoard {
     display: grid; 
     grid-template-columns: repeat(6, 1fr);
     grid-gap: .3rem;
     margin: 10px;
     width: 500px;
+  }
+
+
+  .gameBoardContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex:1;
+
+  }
+
+
+  .gameOver {
+    font-size: calc(15px + 2vmin);
+    font-weight: 500;
+    display: flex;
+    justify-content: center;
+    margin: 6px;
+  }
+
+  .gameDescription {
+    margin: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+
+  .memoryGameControls {
+    height: 30px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
   }
 
   .memoryCard {
@@ -35,52 +61,30 @@
     display: flex;
   }
 
-  .GameBoardContainer{
+  
+  .memoryCardFlipped {
+    height: 60px;
+    border: 1px solid gray;
+    border-radius: 4px;
+    background-color:  rgba(211, 204, 103, 0.514);
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    flex:1;
-
   }
 
-
-  .GameOver {
-    font-size: calc(15px + 2vmin);
-    font-weight: 500;
-    display: flex;
-    justify-content: center;
-    margin: 6px;
-  }
-
-  .GameDescription {
-    margin: 10px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-  }
-
-  .MemoryGameControls {
-    height:30px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-items: center
-  }
-
-  .isMatched {
-   // filter: sepia(.5);
+  
+  .memoryCardMatched {
+    height: 60px;
+    border: 1px solid gray;
+    border-radius: 4px;
     background-color: gray;
     color: darkgray;
+    display: flex;
   }
 
-  .isFlipped {
-   background-color:  rgba(211, 204, 103, 0.514);
-  }
 
-  // not sure about this.  Don't use for now
+    // not sure about this.  Don't use for now
   .isUnmatched {
-   // background-color: rgb(206, 70, 70);
-  }
+    background-color: rgb(206, 70, 70);
+   }
 
   .cardIcon {
     display:flex;

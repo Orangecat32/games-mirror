@@ -3,7 +3,7 @@ import React from 'react';
 import { Icon, Button, Switch } from "@blueprintjs/core";
 import {createCards, isMatchedCard, isFlippedCard, isUnmatchedCard } from './utils.js';
 import {gameDescription, ICON_COUNT} from './constants';
-import './MemoryGame.scss';
+import styles from './MemoryGame.scss';
 
 export class MemoryGame extends React.Component {
   constructor(props) {
@@ -69,27 +69,27 @@ export class MemoryGame extends React.Component {
 
   render() {
     return (
-      <div className="MemoryGameContainer" >
-        <div className="InnerGame">
-          <div className="GameDescription">
+      <div className={styles.memoryGameContainer} >
+    
+          <div className={styles.gameDescription}>
             {gameDescription()}
           </div> 
           { this.state.matchedIcons.length === ICON_COUNT &&
-            <div className="GameOver">
+            <div className={styles.gameOver}>
               GAME OVER!
             </div>
           }
-          <div className="MemoryGameControls">
+          <div className={styles.memoryGameControls}>
             <Button text="Restart" onClick={() => this.initializeState()} />
             <Switch checked={this.state.showAll} label="Show All" style={{marginTop:'6px'}}
               onChange={() => this.setState({showAll: !this.state.showAll})}/>
           </div>
-          <div className="GameBoardContainer">
-            <div className="GameBoard">
+          <div className={styles.gameBoardContainer}>
+            <div className={styles.gameBoard}>
               {this.buildCardDisplay()}
             </div>
           </div>
-        </div>
+
       </div>
     );
   }
@@ -98,11 +98,11 @@ export class MemoryGame extends React.Component {
 
 const MemoryCard = (props) => {
   const showIcon = props.isMatch || props.isFlipped || props.showAll;
-  const cn = `memoryCard ${props.isMatch === true ? 'isMatched' : ''}  ${props.isFlipped ? 'isFlipped' : ''} ${props.isUnmatched ? 'isUnmatched' : ''}`;
+  const cn = `${styles.memoryCard}${props.isMatch === true ? 'Matched' : ''}${props.isFlipped ? 'Flipped' : ''}`;
   return (
     <div className={cn} onClick={props.onClick}>
       {showIcon &&
-        <div className="cardIcon">
+        <div className={styles.cardIcon}>
           <Icon icon={props.name} iconSize={35}/>
         </div>
       }
