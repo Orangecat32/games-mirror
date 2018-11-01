@@ -4,7 +4,6 @@
     flex: 1 1;
     flex-direction: column;
     align-items: center;
-    //height: 100%;
     width: 100%;
    // background-color: whitesmoke;
     min-width: 525px;
@@ -24,7 +23,6 @@
     flex-direction: column;
     align-items: center;
     flex:1;
-
   }
 
 
@@ -53,39 +51,21 @@
   }
 
   .memoryCard {
-    height: 60px;
-    border: 1px solid gray;
-    border-radius: 4px;
+    border: 2px solid gray;
+    border-radius: 5px;
     background-color: deepskyblue;
     display: flex;
     width: calc(8vw);
     height: calc(8vw);
   }
 
-  
-  .memoryCardFlipped {
-    height: calc(8vw);
-    border: 1px solid gray;
-    border-radius: 4px;
-    background-color:  rgba(211, 204, 103, 0.514);
-    display: flex;
+  div[type="flipped"] {
+    background-color: rgb(201, 201, 103);
   }
 
-  
-  .memoryCardMatched {
-    height: calc(8vw);
-    border: 1px solid gray;
-    border-radius: 4px;
+  div[type="matched"] {
     background-color: gray;
-    color: darkgray;
-    display: flex;
   }
-
-
-    // not sure about this.  Don't use for now
-  .isUnmatched {
-    background-color: rgb(206, 70, 70);
-   }
 
   .cardIcon {
     display:flex;

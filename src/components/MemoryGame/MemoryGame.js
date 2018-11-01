@@ -87,7 +87,6 @@ export class MemoryGame extends React.Component {
               {this.buildCardDisplay()}
             </div>
           </div>
-
       </div>
     );
   }
@@ -96,11 +95,12 @@ export class MemoryGame extends React.Component {
 
 const MemoryCard = (props) => {
   const showIcon = props.isMatch || props.isFlipped || props.showAll;
-  const cn = `${styles.memoryCard}${props.isMatch === true ? 'Matched' : ''}${props.isFlipped ? 'Flipped' : ''}`;
+  const cardType = `${props.isFlipped ? 'flipped' : props.isMatch ? 'matched' : undefined}`;
+
   return (
-    <div className={cn} onClick={props.onClick}>
+    <div className={styles.memoryCard} onClick={props.onClick}>
       {showIcon &&
-        <div className={styles.cardIcon}>
+        <div className={styles.cardIcon} type={cardType} >
           <Icon icon={props.name}  iconSize={'calc(2.5vw + 2px)'}  />
         </div>
       }
