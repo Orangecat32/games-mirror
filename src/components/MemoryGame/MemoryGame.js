@@ -12,7 +12,6 @@ export class MemoryGame extends React.Component {
   }
 
   componentWillMount(props){
-    console.log('mount');
     this.initializeState();
   }
 
@@ -70,7 +69,6 @@ export class MemoryGame extends React.Component {
   render() {
     return (
       <div className={styles.memoryGameContainer} >
-    
           <div className={styles.gameDescription}>
             {gameDescription()}
           </div> 
@@ -103,12 +101,11 @@ const MemoryCard = (props) => {
     <div className={cn} onClick={props.onClick}>
       {showIcon &&
         <div className={styles.cardIcon}>
-          <Icon icon={props.name} iconSize={35}/>
+          <Icon icon={props.name}  iconSize={'calc(2.5vw + 2px)'}  />
         </div>
       }
     </div>
     )
 };
-
 
 export default MemoryGame;

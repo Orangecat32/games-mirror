@@ -1,19 +1,36 @@
 import React, { Component } from 'react';
 import { Button } from "@blueprintjs/core";
-import {MemoryGame} from "./components/MemoryGame/MemoryGame.js"
+import {MemoryGame} from "./components/MemoryGame/MemoryGame.js";
+import {BowlingGame} from "./components/BowlingGame/BowlingGame.js"
 import { Alignment, Classes, Navbar, NavbarDivider,  NavbarGroup,  NavbarHeading} from "@blueprintjs/core";
 import styles from './App.scss';
+import * as constants from './constants.js';
 
 
-const MEMORY_GAME = 'Memory';
-const BOWLING_GAME = 'Bowling';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-     game: MEMORY_GAME
-  };
+     game: constants.MEMORY_GAME
+    };
+  }
+
+  gameSelectionButtons() {
+    return (
+      <div> 
+      {
+        constants.AvailableGames.map(g => (
+          <Button 
+            key={g}
+            className={Classes.MINIMAL} 
+            active={this.state.game === g}
+            text={g} 
+            onClick={()=> this.setState({game: g})} />
+        ))
+      }
+      </div>
+    );
   }
 
   render() {
@@ -23,31 +40,25 @@ class App extends Component {
           <NavbarGroup align={Alignment.LEFT}>
             <NavbarHeading>Game Room</NavbarHeading>
             <NavbarDivider />
-            <Button 
-              className={Classes.MINIMAL} 
-              active={this.state.game === MEMORY_GAME}
-              text={MEMORY_GAME} 
-              onClick={()=> this.setState({game: MEMORY_GAME})} />
-            <Button 
-              className={Classes.MINIMAL} 
-              active={this.state.game === BOWLING_GAME}
-              text={BOWLING_GAME} 
-              onClick={()=> this.setState({game: BOWLING_GAME})} />
+            {this.gameSelectionButtons()}
           </NavbarGroup>
         </Navbar>
         <div className={styles.gameContainer}>
-          {this.state.game === MEMORY_GAME &&
+          {this.state.game === constants.MEMORY_GAME &&
             <div>
              <MemoryGame />
             </div>
-
           }
-           {this.state.game === BOWLING_GAME &&
+          {this.state.game === constants.BOWLING_GAME &&
+            <div>
+             <BowlingGame />
+            </div>
+          }
+          {this.state.game === constants.MAZE_GAME &&
             <div className={styles.constructionContainer}>
              <UnderConstruction text={`${this.state.game} is under construction`} />
             </div>
-          }
-        
+          } 
         </div>   
       </div>
     );

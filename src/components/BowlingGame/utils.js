@@ -1,10 +1,12 @@
 
-const SPARE = 1;
-const STRIKE = 2;
-const UNMARKED = 0;
-const TENTH_FRAME = 9;
+import {UNMARKED, TENTH_FRAME, NINETH_FRAME, STRIKE, SPARE} from './constants.js';
 
-// class that represents a single frame as displayed on the bowling scorecard
+const STRIKE_CHAR = 'X';
+const SPARE_CHAR = '/';
+const GUTTERBALL_CHAR = '-';
+
+
+// Frame class represents a single frame as displayed on the bowling scorecard
 // there will be ten of these per game
 class Frame {
   constructor(num){
@@ -30,12 +32,65 @@ class Frame {
       ? STRIKE
       : this.rolls[0] + this.rolls[1] === 10 ? SPARE : UNMARKED;
    }
+
+}
+
+export const scoreBox1 = (frame) => {
+  if(frame.frame === TENTH_FRAME && frame.rolls.length > 0) {
+    return frame.mark === STRIKE ? STRIKE_CHAR : frame.rolls[0] === 0 ? GUTTERBALL_CHAR : frame.rolls[0];
+  }
+
+  return '';
+ }
+
+export const scoreBox2 = (frame) => {
+  if(frame.rolls.length === 0)
+    return '';
+
+  if(frame.frame === TENTH_FRAME){
+   return frame.mark === SPARE ? SPARE_CHAR 
+    : frame.rolls[1] === 10 ? STRIKE_CHAR 
+    : frame.rolls[1] === 0  ? GUTTERBALL_CHAR 
+    : frame.rolls[1]; 
+  } else {
+    return frame.mark === STRIKE ? STRIKE_CHAR : frame.rolls[0] === 0 ? GUTTERBALL_CHAR : frame.rolls[0];
+  }
+}
+
+export const scoreBox3 = (frame) => {
+  if(frame.rolls.length === 0)
+    return '';
+  
+  if(frame.frame === TENTH_FRAME) {
+    switch(frame.mark) {
+      default:
+        return '';
+      case STRIKE:
+        return frame.rolls[2] === 10 ? STRIKE_CHAR 
+        : frame.rolls[1] + frame.rolls[2] === 10 ? SPARE_CHAR 
+        : frame.rolls[2] === 0 ? GUTTERBALL_CHAR : frame.rolls[2];
+      case SPARE:
+        return frame.rolls[2] === 10 ? STRIKE_CHAR : frame.rolls[2] ;
+    }
+  } else {   
+    switch(frame.mark) {
+      default:
+        return frame.rolls[1] === 0 ? GUTTERBALL_CHAR : frame.rolls[1];
+      case STRIKE:
+        return '';
+      case SPARE:
+        return SPARE_CHAR;
+    }
+  }
 }
 
 // how many pins to display?
 export const availablePins = (frame) => {
-   if(frame.rolls.length === 0)
-      return 10;
+  if(!frame)
+    return 0;
+
+  if(frame.rolls.length === 0)
+    return 10;
   
   if(frame.frame === TENTH_FRAME){
     if(frame.rolls.length === 1) {
@@ -51,6 +106,7 @@ export const availablePins = (frame) => {
   return 10 - frame.rolls[0];
 }
 
+export const currentFrame = (frames) => frames.find(f => !f.complete);
 
 //  returns the frames from the rolls
 const getFrames = (rolls) => {
@@ -60,8 +116,8 @@ const getFrames = (rolls) => {
   }
   
   let ball = 0; //  count of balls rolled per frame
-  let f = 0;
-  let lastFrame = [0,0,0];
+  let f = 0;    //  index of the current frame
+  let lastFrame = [0, 0, 0];
 
   (rolls || []).forEach(pins => {
     let frame = frames[f];
@@ -92,7 +148,7 @@ const nextTwoRolls = (f1, f2, f3) => {
     return f1.rolls[1] + f1.rolls[2];
   }
   
-  if(f1.frame === 8) {
+  if(f1.frame === NINETH_FRAME) {
       // next to last frame
     if(f2.mark === STRIKE) {
       //  strike in last frame
@@ -116,11 +172,13 @@ const nextRoll = (f1, f2) => {
     return f1.rolls[2];
   }
   
-  return f2 && f2.rolls.length > 0 ? f2.rolls[0] : NaN; 
+  return f2 && f2.rolls.length > 0 ? f2.rolls[0] : undefined; 
 }
+
+export const isGameComplete = (frames) => frames[TENTH_FRAME].complete === true;
  
 //  return the score of frame f1
-const scoreFrame = (f1, f2, f3) => {
+export const scoreFrame = (f1, f2, f3) => {
   if(f1.complete) {
     switch(f1.mark) {
       case STRIKE:
@@ -137,20 +195,22 @@ const scoreFrame = (f1, f2, f3) => {
   return NaN;
 }
 
-// return the currnt score based on balls rolled
-export const totalScore = (frames) => {
-   let total = 0;
-  
-   for(let i = 0; i < 10; i++){
-     const fs = scoreFrame(frames[i],frames[i+1],frames[i+2]);
-     frames[i].score = fs;
-     total += fs;
-     frames[i].totalScore = total;
-     console.log(`count: ${i}, score:${fs}, total:${total}` );
-   }
-                         
-   return total; 
-}  
+export const framesFromRolls = (rolls) => {
+    let frames = getFrames(rolls);
+    let total = 0;
+    for(let i = 0; i < 10; i++){
+      const fs = scoreFrame(frames[i],frames[i+1],frames[i+2]);
+      frames[i].score = fs;
+      total += fs;
+      frames[i].totalScore = total;
+    //  console.log(`count: ${i}, score:${fs}, total:${total}`, frames[i]);
+    }
+
+    return frames;
+}
+
+// return the current total score based on balls rolled by checking the last complete frame
+export const totalScore = (rolls) => framesFromRolls(rolls).reverse().find(f => f.complete).totalScore;                  
 
 
 

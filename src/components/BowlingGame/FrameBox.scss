@@ -1,0 +1,74 @@
+.frameBox {
+    border-top: 1px solid ;
+    border-bottom: 1px solid ;
+    border-left: 1px solid ;
+    display: grid; 
+    grid-template-rows: .8fr 1fr 1.7fr;
+    background-color: whitesmoke;
+    font-size: calc(8px + 3.5vmin);
+}
+
+.lastFrameBox {
+    border: 1px solid ;
+    display: grid; 
+    grid-template-rows: .8fr 1fr 1.7fr;
+    background-color: whitesmoke;
+    font-size: calc(8px + 3.5vmin);
+}
+
+
+.frameNumber {
+    display:flex;
+    justify-content: center;
+    border-bottom: 1px solid;
+    align-items: center;
+    font-size: calc(8px + 2vmin);
+}
+
+.markArea {
+    display:flex;
+    flex:1;
+    justify-content: end;
+    flex-direction: row;
+}
+
+.firstBall {
+    display: flex;
+    flex: 1;
+}
+
+.firstBox {
+    border-bottom: 1px solid;
+    display: flex;
+    align-items: center;
+    flex: 1;
+    justify-content: center;
+    margin-left: -1px;
+}
+
+.middleBox {
+    border-bottom: 1px solid;
+    border-left: 1px solid;
+    display: flex;
+    align-items: center;
+    flex: 1;
+    justify-content: center;
+}
+
+.markBox {
+    border-left: 1px solid;
+    border-bottom: 1px solid;
+    display: flex;
+    align-items: center;
+    flex: 1;
+    justify-content: center;
+}
+
+.totalScore  {  
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    font-weight: bold;
+    font-size: calc(8px + 3.5vmin);
+}

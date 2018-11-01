@@ -1,0 +1,39 @@
+.gameOver {
+    font-size: calc(8px + 2vmin);
+    font-weight: 500;
+    display: flex;
+    justify-content: center;
+    margin: 6px;
+  }
+
+  .frameBox {
+    border: 1px solid gray;
+    display: flex; 
+    flex: 1;
+    margin: 6px;
+}
+
+.buttonContainer {
+    border: 1px solid whitesmoke;
+    display: flex; 
+    flex: 1;  
+    align-items: center;
+    margin: 6px;
+    width: 500px;
+}
+
+.pinSelector {
+    display: flex; 
+    flex: 1;  
+    align-items: center;
+    justify-content: center;
+    width:350px;
+}
+
+
+.title {
+    display: flex; 
+    flex: 1;  
+    align-items: center;
+    justify-content: center;
+}

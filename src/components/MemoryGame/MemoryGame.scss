@@ -4,9 +4,8 @@
     flex: 1 1;
     flex-direction: column;
     align-items: center;
-    height: 100%;
+    //height: 100%;
     width: 100%;
-    position: absolute;
    // background-color: whitesmoke;
     min-width: 525px;
   }
@@ -14,9 +13,9 @@
   .gameBoard {
     display: grid; 
     grid-template-columns: repeat(6, 1fr);
-    grid-gap: .3rem;
+    grid-gap: .15rem;
     margin: 10px;
-    width: 500px;
+    width: 100%;
   }
 
 
@@ -59,11 +58,13 @@
     border-radius: 4px;
     background-color: deepskyblue;
     display: flex;
+    width: calc(8vw);
+    height: calc(8vw);
   }
 
   
   .memoryCardFlipped {
-    height: 60px;
+    height: calc(8vw);
     border: 1px solid gray;
     border-radius: 4px;
     background-color:  rgba(211, 204, 103, 0.514);
@@ -72,7 +73,7 @@
 
   
   .memoryCardMatched {
-    height: 60px;
+    height: calc(8vw);
     border: 1px solid gray;
     border-radius: 4px;
     background-color: gray;
