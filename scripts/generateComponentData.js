@@ -85,7 +85,7 @@ function getFiles(filepath) {
 
 function writeFile(filepath, content) {
   fs.writeFile(filepath, content, function (err) {
-    err ? console.log(chalk.red(err)) : console.log(chalk.green("Component data saved."));
+    err ? console.log(chalk.red(err)) : console.log(chalk.green("Component doc data saved."));
   });
 }
 
