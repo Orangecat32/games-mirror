@@ -5,19 +5,19 @@ import {TENTH_FRAME} from './constants.js';
 import {scoreBox1, scoreBox2, scoreBox3} from './utils.js';
 
 export const FrameBox = (props) => {
-    return (
-      <div className={props.frame !== TENTH_FRAME ? styles.frameBox : styles.lastFrameBox}>
+    return ( 
+      <div className={styles.frameBox}  type={props.frame === TENTH_FRAME ? 'tenth' : '' }>
         <div className={styles.frameNumber}>
           {props.frame + 1}
         </div>    
         <div className={styles.markArea}>
-          <div className={props.frame !== TENTH_FRAME ? styles.firstBall : styles.firstBox}>
+          <div className={styles.scoreBox} type={props.frame === TENTH_FRAME ? 'mark-tenth' : '' }>
             {scoreBox1(props)} 
           </div>
-          <div className={styles.middleBox}>
+          <div className={styles.scoreBox} type={'mark'}>
             {scoreBox2(props)} 
           </div>
-          <div className={styles.markBox}>
+          <div className={styles.scoreBox} type={'mark'}>
             {scoreBox3(props)} 
           </div>
         </div>
