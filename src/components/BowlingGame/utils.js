@@ -35,13 +35,48 @@ class Frame {
 
 }
 
+
+export const updateFrames = (framesToUpdate, roll) => {
+  let frames = framesToUpdate.slice();
+  let thisFrame = currentFrame(frames);
+  if(thisFrame) {
+    thisFrame.addRoll(roll);
+  }
+ 
+  let total = 0;
+  for(let i = 0; i < 10; i++){
+    const fs = scoreFrame(frames[i],frames[i+1],frames[i+2]);
+    frames[i].score = fs;
+    total += fs;
+    frames[i].totalScore = total;
+  //  console.log(`count: ${i}, score:${fs}, total:${total}`, frames[i]);
+  }
+
+  return frames;
+}         
+
+
+export const currentFrame = (frames) => (frames || []).find(f => !f.complete);
+
+export const currentScore = (frames) => {
+  const f = frames.reverse().find(f => f.complete);
+  return f ? f.totalScore : frames[0].totalScore;
+} 
+
+export const emptyFrames = () => getFrames([]);
+
+export const isGameComplete = (frames) => (frames || []).length && frames[TENTH_FRAME].complete === true;
+
+// return the current total score based on balls rolled by checking the last complete frame
+export const scoreFromRolls = (rolls) => framesFromRolls(rolls).reverse().find(f => f.complete).totalScore;   
+
 export const scoreBox1 = (frame) => {
   if(frame.frame === TENTH_FRAME && frame.rolls.length > 0) {
     return frame.mark === STRIKE ? STRIKE_CHAR : frame.rolls[0] === 0 ? GUTTERBALL_CHAR : frame.rolls[0];
   }
 
   return '';
- }
+}
 
 export const scoreBox2 = (frame) => {
   if(frame.rolls.length === 0)
@@ -106,14 +141,9 @@ export const availablePins = (frame) => {
   return 10 - frame.rolls[0];
 }
 
-export const currentFrame = (frames) => frames.find(f => !f.complete);
-
 //  returns the frames from the rolls
 const getFrames = (rolls) => {
-  let frames = [];
-  for(let i = 0; i < 10; i++){
-    frames.push(new Frame(i));
-  }
+  const frames = Array.from({length: 10}, (v, k) => new Frame(k++));
   
   let ball = 0; //  count of balls rolled per frame
   let f = 0;    //  index of the current frame
@@ -125,19 +155,20 @@ const getFrames = (rolls) => {
     
     if(f === TENTH_FRAME) {
      //  last frame is special because the player might get three rolls
-     lastFrame[ball] = pins;
-     if(ball === 2 || (ball === 1 && lastFrame[0] + lastFrame[1] < 9)) {
-      console.log('score complete') 
-    }      
-    ball++;
-   } else { 
-     if(pins === 10 || ball === 1) {
-      f++;
-      ball = 0;
-    } else {
-     ball++;
-    } 
-  }});
+      lastFrame[ball] = pins;
+      if(ball === 2 || (ball === 1 && lastFrame[0] + lastFrame[1] < 9)) {
+        console.log('score complete') 
+      }      
+      ball++;
+    } else { 
+      if(pins === 10 || ball === 1) {
+        f++;
+        ball = 0;
+      } else {
+        ball++;
+      } 
+    }
+  });
 
   return frames;
 } 
@@ -175,10 +206,8 @@ const nextRoll = (f1, f2) => {
   return f2 && f2.rolls.length > 0 ? f2.rolls[0] : undefined; 
 }
 
-export const isGameComplete = (frames) => frames[TENTH_FRAME].complete === true;
- 
 //  return the score of frame f1
-export const scoreFrame = (f1, f2, f3) => {
+const scoreFrame = (f1, f2, f3) => {
   if(f1.complete) {
     switch(f1.mark) {
       case STRIKE:
@@ -195,6 +224,7 @@ export const scoreFrame = (f1, f2, f3) => {
   return NaN;
 }
 
+
 export const framesFromRolls = (rolls) => {
     let frames = getFrames(rolls);
     let total = 0;
@@ -207,11 +237,5 @@ export const framesFromRolls = (rolls) => {
     }
 
     return frames;
-}
-
-// return the current total score based on balls rolled by checking the last complete frame
-export const totalScore = (rolls) => framesFromRolls(rolls).reverse().find(f => f.complete).totalScore;                  
-
-
-
+}         
 

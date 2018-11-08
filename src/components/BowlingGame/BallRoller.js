@@ -4,17 +4,14 @@ import { Button } from "@blueprintjs/core";
 import * as styles from './BallRoller.scss';
 import {availablePins} from './utils.js';
 
-const buildDisplay = (pins, addRoll) => {
-    let possibleRolls = [];
-    for(let i = 0; i <= pins; i++)
-        possibleRolls.push(i);
-   
-    return possibleRolls.map(p => <Button text={p} key={p} onClick={() => addRoll(p)} /> );
-}
-
 export const BallRoller = (props) => {
   const frame = props.frame;
-  const pins = availablePins(frame);
+  const pins = Array.from({length: availablePins(frame) + 1}, (v, k) => k++)
+                    .map(p => <Button 
+                                text={p} 
+                                key={p} 
+                                onClick={() => props.addRoll(p)} 
+                              /> );
 
   return (
     <div className={styles.container}>
@@ -33,7 +30,7 @@ export const BallRoller = (props) => {
             {'Click the number of pins to knock down'}
           </div> 
           <div className={styles.frameBox} >
-          {buildDisplay(pins, props.addRoll)}
+            {pins}
           </div>
         </div>
        </div>

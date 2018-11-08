@@ -7,14 +7,14 @@
   }
 
   .frameBox {
-    border: 1px solid gray;
     display: flex; 
     flex: 1;
     margin: 6px;
+    justify-content: center;
 }
 
 .buttonContainer {
-    border: 1px solid whitesmoke;
+    border: thin solid whitesmoke;
     display: flex; 
     flex: 1;  
     align-items: center;

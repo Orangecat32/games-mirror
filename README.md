@@ -1,5 +1,20 @@
 # games
-React components for playing various games. 
-Memory test game is functional and bowling game is coming soon.
 
-To run the application locally, clone the repository to your machine, run yarn, then npm start.
+React Components for playing simple games
+
+What is this repro?
+    This is a work in progress, created purely for my own amusement. 
+
+Framework History:
+    The application began with create-react-app. 
+    Webpack was modified webpack for locally scoped css class names.
+    Redux added.
+
+Future features:
+    Add more games
+    multi-player mode
+    auto-play with statistics collection
+    dashboard for statistics display
+    split up store and redux related code
+    Add some tests
+    etc...
