@@ -19,5 +19,11 @@ React Components for playing simple games
     - Add some tests
     - etc...
 
-- Bowling Game
+- Bowling Game Screen 
+
     ![Alt text](/documentation/bowling.png?raw=true "Optional Title")
+
+    
+- Memory Game Screen 
+
+    ![Alt text](/documentation/memory.png?raw=true "Optional Title")
