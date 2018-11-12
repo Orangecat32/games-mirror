@@ -1,20 +1,23 @@
-# games
+# Roy's game room
 
 React Components for playing simple games
 
-What is this repro?
-    This is a work in progress, created purely for my own amusement. 
+## About this repro
+ - This is a work in progress, created purely for my own amusement. 
 
-Framework History:
-    The application began with create-react-app. 
-    Webpack was modified webpack for locally scoped css class names.
-    Redux added.
+ - Framework History:
+    - This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+    - Webpack was modified webpack for locally scoped css class names.
+    - Redux added.
 
-Future features:
-    Add more games
-    multi-player mode
-    auto-play with statistics collection
-    dashboard for statistics display
-    split up store and redux related code
-    Add some tests
-    etc...
+- Future features: 
+    - Add more games
+    - multi-player mode
+    - auto-play with statistics collection
+    - dashboard for statistics display
+    - split up store and redux related code
+    - Add some tests
+    - etc...
+
+- Bowling Game
+    ![Alt text](/documentation/bowling.png?raw=true "Optional Title")
