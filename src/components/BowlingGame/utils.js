@@ -7,8 +7,8 @@ const GUTTERBALL_CHAR = '-';
 
 
 // Frame class represents a single frame as displayed on the bowling scorecard
-// there will be ten of these per game
-class Frame {
+// There will be ten of these per game
+export class Frame {
   constructor(num){
     this.frame = num;
     this.rolls = [];
@@ -32,7 +32,6 @@ class Frame {
       ? STRIKE
       : this.rolls[0] + this.rolls[1] === 10 ? SPARE : UNMARKED;
    }
-
 }
 
 
@@ -63,12 +62,10 @@ export const currentScore = (frames) => {
   return f ? f.totalScore : frames[0].totalScore;
 } 
 
-export const emptyFrames = () => getFrames([]);
+export const emptyFrames = () => Array.from({length: 10}, (v, k) => new Frame(k++));
 
 export const isGameComplete = (frames) => (frames || []).length && frames[TENTH_FRAME].complete === true;
 
-// return the current total score based on balls rolled by checking the last complete frame
-export const scoreFromRolls = (rolls) => framesFromRolls(rolls).reverse().find(f => f.complete).totalScore;   
 
 export const scoreBox1 = (frame) => {
   if(frame.frame === TENTH_FRAME && frame.rolls.length > 0) {
@@ -141,38 +138,6 @@ export const availablePins = (frame) => {
   return 10 - frame.rolls[0];
 }
 
-//  returns the frames from the rolls
-const getFrames = (rolls) => {
-  const frames = Array.from({length: 10}, (v, k) => new Frame(k++));
-  
-  let ball = 0; //  count of balls rolled per frame
-  let f = 0;    //  index of the current frame
-  let lastFrame = [0, 0, 0];
-
-  (rolls || []).forEach(pins => {
-    let frame = frames[f];
-    frame.addRoll(pins);
-    
-    if(f === TENTH_FRAME) {
-     //  last frame is special because the player might get three rolls
-      lastFrame[ball] = pins;
-      if(ball === 2 || (ball === 1 && lastFrame[0] + lastFrame[1] < 9)) {
-        console.log('score complete') 
-      }      
-      ball++;
-    } else { 
-      if(pins === 10 || ball === 1) {
-        f++;
-        ball = 0;
-      } else {
-        ball++;
-      } 
-    }
-  });
-
-  return frames;
-} 
- 
 //  return the score from next two rolls when users rolls a strike
 const nextTwoRolls = (f1, f2, f3) => {
   if(f1.frame === TENTH_FRAME) {
@@ -224,18 +189,4 @@ const scoreFrame = (f1, f2, f3) => {
   return NaN;
 }
 
-
-export const framesFromRolls = (rolls) => {
-    let frames = getFrames(rolls);
-    let total = 0;
-    for(let i = 0; i < 10; i++){
-      const fs = scoreFrame(frames[i],frames[i+1],frames[i+2]);
-      frames[i].score = fs;
-      total += fs;
-      frames[i].totalScore = total;
-    //  console.log(`count: ${i}, score:${fs}, total:${total}`, frames[i]);
-    }
-
-    return frames;
-}         
 
