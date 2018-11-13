@@ -8,8 +8,7 @@ import {MemoryGame} from "./MemoryGame.js";
 function mapStateToProps(state) {
     console.log('mem map')
     return {
-      ...state.memoryGame,
-      color: 'blue'
+      ...state.memoryGame
     };
   }
   
