@@ -4,6 +4,6 @@ import * as appConstants from '../constants';
 
 export const initialState = {
     selectedGame: appConstants.MEMORY_GAME,
-    ...memoryGame.init(),
-    ...bowlingGame.init()
+    memoryGame: memoryGame.init(),
+    bowlingGame: bowlingGame.init()
   };

@@ -1,14 +1,14 @@
 import {initialState} from '../store';
 import { bowlingReducer } from "./bowlingReducer";
 import { memoryReducer } from "./memoryReducer";
-import { appReducer } from "./app";
+import {SELECT_GAME} from "../actions/index";
 
-//  todo: refactor like this https://redux.js.org/recipes/structuringreducers/refactoringreducersexample
   export function gameRoomReducer(state = initialState, action) {
-    state = memoryReducer(state, action);
-    state = bowlingReducer(state, action);
-    state = appReducer(state, action);
-    return state;
+    return {
+      memoryGame: memoryReducer(state.memoryGame, action),
+      bowlingGame: bowlingReducer(state.bowlingGame, action),
+      selectedGame: action.type === SELECT_GAME ? action.payload : state.selectedGame
+    }
   }
   
   export default gameRoomReducer;
