@@ -54,7 +54,7 @@ const MemoryCard = (props) => {
     <div className={styles.memoryCard} onClick={props.onClick}>
       {showIcon &&
         <div className={iconClass} >
-          <Icon icon={props.name}  iconSize={'calc(2.5vw + 2px)'}  />
+          <Icon icon={props.name}  iconSize={'calc(6vmin)'}  />
         </div>
       }
     </div>
