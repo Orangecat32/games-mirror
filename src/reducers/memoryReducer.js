@@ -5,7 +5,7 @@ import {createCards, clickCard} from '../components/MemoryGame/utils';
   export function memoryReducer(state, action) {
     switch(action.type) {
       case START_MEMORY_GAME:
-        return Object.assign({}, state, {cards: createCards(), memoryClicks: 0}); 
+        return Object.assign({}, state, {cards: createCards(action.payload), memoryClicks: 0}); 
       case UNFLIP_ALL:
         const ufc = state.cards.map(c => c.isFlipped ? Object.assign({}, c , {isFlipped: false}) : c);
         return  Object.assign({}, state, {cards: ufc });

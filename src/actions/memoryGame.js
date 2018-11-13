@@ -1,11 +1,16 @@
+
+import {randomCardArray} from '../components/MemoryGame/utils';
+
 export const START_MEMORY_GAME = 'START_MEMORY_GAME';
 export const SHOW_ALL = 'SHOW_ALL';
 export const CLICK_CARD = 'CLICK_CARD';
 export const UNFLIP_ALL = 'UNFLIP_ALL';
 
+
 export function startGame() {
   return {
-    type: START_MEMORY_GAME
+    type: START_MEMORY_GAME,
+    payload: randomCardArray()
   }
 }
 

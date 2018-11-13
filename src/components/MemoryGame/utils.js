@@ -1,25 +1,27 @@
 import {ICON_COUNT, iconNames} from './constants';
 
-// build the cards array. Note:  not pure because returns cards in random locations
-export const createCards = () => {
+// build the cards array. 
+export const createCards = (randomArray) => {
   let cards = [];
   for(let i = 0, n = 0; i < ICON_COUNT; i++){
     cards.push({index:n++, name:iconNames[i]});
     cards.push({index:n++, name:iconNames[i]});
   }
 
-  // shuffle the cards
-  const randomIndices = randomArray(ICON_COUNT * 2);
+  // shuffle the cards based upon the input random array (comes from the function below )
   let randomCards = [];
   for(let i = 0; i < ICON_COUNT * 2; i++){
-    randomCards[randomIndices[i] - 1] = cards[i];
+    randomCards[randomArray[i] - 1] = cards[i];
   }
 
   return randomCards;
 }
 
+export const randomCardArray = () => randomArray(ICON_COUNT * 2);
+
 // return array of unique numbers between 1 and length (inclusive) in random order
-function randomArray(length){
+// Used to shuffle the cards
+const randomArray = (length) => {
   let arr = []
   while(arr.length < length){
       var randomnumber = Math.floor(Math.random()*length) + 1;

@@ -1,3 +1,3 @@
-import {createCards} from '../components/MemoryGame/utils';
+import {createCards, randomCardArray} from '../components/MemoryGame/utils';
 
-export const init = () => ({ showAll:false, cards: createCards(), memoryClicks: 0});
+export const init = () => ({ showAll:false, cards: createCards(randomCardArray()), memoryClicks: 0});
