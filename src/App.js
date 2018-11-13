@@ -5,11 +5,11 @@ import PropTypes from 'prop-types';
 import { Button } from "@blueprintjs/core";
 
 import * as myActions from "./actions/index";
-import {MemoryGame} from "./components/MemoryGame/MemoryGame.js";
-import {BowlingGame} from "./components/BowlingGame/BowlingGame.js"
 import { Alignment, Classes, Navbar, NavbarDivider,  NavbarGroup,  NavbarHeading} from "@blueprintjs/core";
 import styles from './App.scss';
 import * as constants from './constants.js';
+import MemoryGameContainer from './components/MemoryGame/container.js';
+import BowlingGameContainer from './components/BowlingGame/container.js';
 
 class App extends Component {
   gameSelectionButtons() {
@@ -32,6 +32,7 @@ class App extends Component {
   render() {
     return (
       <div className={styles.app}>
+    
         <Navbar>
           <NavbarGroup align={Alignment.LEFT}>
             <NavbarHeading>Game Room</NavbarHeading>
@@ -42,12 +43,12 @@ class App extends Component {
         <div className={styles.gameContainer}>
           {this.props.selectedGame === constants.MEMORY_GAME &&
             <div>
-             <MemoryGame {...this.props}/>
+              <MemoryGameContainer />
             </div>
           }
           {this.props.selectedGame === constants.BOWLING_GAME &&
             <div>
-             <BowlingGame {...this.props}/>
+             <BowlingGameContainer />
             </div>
           }
           {this.props.selectedGame === constants.MAZE_GAME &&
@@ -73,7 +74,6 @@ App.propTypes = {
 
 function mapStateToProps(state) {
   return {
-    ...state,
     selectedGame: state.selectedGame
   };
 }
