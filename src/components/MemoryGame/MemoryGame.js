@@ -1,24 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types'; 
 
-import {hasTwoFlipped} from './utils'
 import { Icon, Button, Switch } from "@blueprintjs/core";
 import {gameDescription} from './constants';
 import styles from './MemoryGame.scss';
 
 export class MemoryGame extends React.Component {
-
-  componentDidUpdate() {
-    if (hasTwoFlipped(this.props.cards)) {
-      //  flip cards back over if unmatched but give user a little time to see they did not match
-      setTimeout(() => {
-        this.props.appActions.unflipAll();
-       }, 700);    
-    }
-  }
-
   render() {
-    const isGameOver = !this.props.cards.find(c => c.isMatched !== true);
+    const isGameOver = !this.props.cards.find(c => !c.isMatched);
     return (
       <div className={styles.memoryGameContainer} >
         <div className={styles.gameDescription}>
@@ -31,13 +20,19 @@ export class MemoryGame extends React.Component {
         }
         <div className={styles.memoryGameControls}>
           <Button text="Restart" onClick={() => this.props.appActions.startGame()} />
-          {`Click Count: ${this.props.memoryClicks}`}
+          {`Click Count: ${this.props.clickCount}`}
           <Switch checked={this.props.showAll} label="Show All" style={{marginTop:'6px'}}
             onChange={() => this.props.appActions.showAll()}/>
         </div>
         <div className={styles.gameBoardContainer}>
           <div className={styles.gameBoard}>
-            {buildCardDisplay(this.props.cards, this.props.showAll, this.props.appActions.clickCard)}
+            {(this.props.cards || []).map(card => (
+              <MemoryCard 
+                key={card.index}
+                showAll={this.props.showAll}
+                onClick={ ()=> this.props.appActions.clickCard(card)} 
+                {...card} /> 
+            ))}
           </div>
         </div>
       </div>
@@ -60,18 +55,6 @@ const MemoryCard = (props) => {
     </div>
     )
 };
-
-
-  // returns card elements for rendering
-const buildCardDisplay = (cards, showAll, onClick) => {
-    return (cards || []).map(card => (
-        <MemoryCard 
-          key={card.index}
-          showAll={showAll}
-          onClick={ ()=> onClick(card)} 
-          {...card} /> 
-      ))
-  }
 
 MemoryGame.propTypes = {
   showAll: PropTypes.bool,
