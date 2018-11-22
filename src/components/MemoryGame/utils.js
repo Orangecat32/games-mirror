@@ -32,11 +32,9 @@ const randomArray = (length) => {
   return arr;
 }
 
-export const hasTwoFlipped = (cards) => cards.filter(c => c.isFlipped).length === 2; 
-
 export const clickCard = (cards, card) => {
   // ignore click if card already turned over or there are two flipped cards already
-  if (card.isFlipped || card.isMatched || hasTwoFlipped(cards)) {
+  if (card.isFlipped || card.isMatched || hasUnmatched(cards)) {
     return null;
   }
 
@@ -55,4 +53,6 @@ export const clickCard = (cards, card) => {
   // turn over the second card (no match)
   return cards.map(c => c.index === card.index ? Object.assign({}, c , {isFlipped: true, isMatched: false}) : c);
 }
+
+export const hasUnmatched = (cards) => cards.filter((c) => c.isFlipped && !c.isMatched).length === 2;
 

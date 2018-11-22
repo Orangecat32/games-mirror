@@ -8,8 +8,8 @@ import * as myActions from "./actions/index";
 import { Alignment, Classes, Navbar, NavbarDivider,  NavbarGroup,  NavbarHeading} from "@blueprintjs/core";
 import styles from './App.scss';
 import * as constants from './constants.js';
-import MemoryGameContainer from './components/MemoryGame/container.js';
-import BowlingGameContainer from './components/BowlingGame/container.js';
+import MemoryGameContainer from './containers/memory.js';
+import BowlingGameContainer from './containers/bowling.js';
 
 class App extends Component {
   gameSelectionButtons() {
