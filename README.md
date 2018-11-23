@@ -8,22 +8,26 @@ React Components for playing simple games
  - Framework History:
     - This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
     - Webpack was modified webpack for locally scoped css class names.
-    - Redux added.
+    - Redux added. Store shaped for multiple components.
+    - Thunk middleware added
 
 - Future features: 
     - Add more games
     - multi-player mode
     - auto-play with statistics collection
     - dashboard for statistics display
-    - split up store and redux related code
     - Add some tests
     - etc...
+
+
 
 - Bowling Game Screen 
 
     ![Alt text](/documentation/bowling.png?raw=true "Optional Title")
 
-    
+
+
+
 - Memory Game Screen 
 
     ![Alt text](/documentation/memory.png?raw=true "Optional Title")
