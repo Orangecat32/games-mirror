@@ -11,8 +11,8 @@ export const unflipAll = () => ({type: UNFLIP_ALL});
 export const showAll = (show) => ({type: SHOW_ALL, show});
 
 export const clickCard = card => (dispatch, getState) => {
-  if(getState().memoryGame.pause) {
-    //  ignore clicks when paused
+  if(getState().memoryGame.pause || card.isMatched || card.isFlipped) {
+    //  ignore clicks when paused or card is already turned over
     return;
   }
 
