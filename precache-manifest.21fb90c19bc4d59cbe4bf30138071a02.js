@@ -1,7 +1,7 @@
 self.__precacheManifest = [
   {
-    "revision": "c6e7874eefb0dacfd50dad73a2de5a17",
-    "url": "/games-mirror/static/media/icons-20.c6e7874e.eot"
+    "revision": "b49a90ee8c246157637b5ed142005d12",
+    "url": "/games-mirror/static/media/icons-16.b49a90ee.woff"
   },
   {
     "revision": "f9b38ca086a60ab3e169",
@@ -32,8 +32,8 @@ self.__precacheManifest = [
     "url": "/games-mirror/static/media/icons-16.d75e6370.ttf"
   },
   {
-    "revision": "b49a90ee8c246157637b5ed142005d12",
-    "url": "/games-mirror/static/media/icons-16.b49a90ee.woff"
+    "revision": "c6e7874eefb0dacfd50dad73a2de5a17",
+    "url": "/games-mirror/static/media/icons-20.c6e7874e.eot"
   },
   {
     "revision": "9baec0ab0bc3096fb9fe865d6ae29d1d",
