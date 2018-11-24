@@ -1,4 +1,5 @@
 import {ICON_COUNT, iconNames} from './constants';
+import {randomArray} from '../../shared/utils';
 
 // build the cards array. 
 export const createCards = (randomArray) => {
@@ -19,18 +20,6 @@ export const createCards = (randomArray) => {
 
 export const randomCardArray = () => randomArray(ICON_COUNT * 2);
 
-// return array of unique numbers between 1 and length (inclusive) in random order
-// Used to shuffle the cards
-const randomArray = (length) => {
-  let arr = []
-  while(arr.length < length){
-      var randomnumber = Math.floor(Math.random()*length) + 1;
-      if(arr.indexOf(randomnumber) > -1) 
-        continue;
-      arr[arr.length] = randomnumber;
-  }
-  return arr;
-}
 
 export const clickCard = (cards, card) => {
   // ignore click if card already turned over or there are two flipped cards already

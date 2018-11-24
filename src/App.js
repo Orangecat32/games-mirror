@@ -42,19 +42,13 @@ class App extends Component {
         </Navbar>
         <div className={styles.gameContainer}>
           {this.props.selectedGame === constants.MEMORY_GAME &&
-            <div>
-              <MemoryGameContainer />
-            </div>
+            <MemoryGameContainer />
           }
           {this.props.selectedGame === constants.BOWLING_GAME &&
-            <div>
-             <BowlingGameContainer />
-            </div>
+            <BowlingGameContainer />
           }
           {this.props.selectedGame === constants.MAZE_GAME &&
-            <div className={styles.constructionContainer}>
-             <UnderConstruction text={`${this.props.selectedGame} is under construction`} />
-            </div>
+            <UnderConstruction text={`${this.props.selectedGame} is under construction`} />
           } 
         </div>   
       </div>
@@ -63,7 +57,7 @@ class App extends Component {
 }
 
 const UnderConstruction = (props) => (
-  <div>
+  <div className={styles.constructionContainer}>
    {props.text}
   </div>
 );

@@ -5,9 +5,7 @@
   min-height: 100vh;
   align-items: center;
   justify-content: flex-start;
-//  background-color: lightskyblue;
-//  border: 5px solid gainsboro;
-  min-width: 300px;
+ // background-color: palegreen;
 }
 
 
@@ -24,7 +22,6 @@
 }
 
 .gameContainer {
-  position: relative;
   display: flex;
   flex:1;
   flex-direction: column;

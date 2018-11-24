@@ -1,25 +1,11 @@
-.gameOver {
-    font-size: calc(8px + 2vmin);
-    font-weight: 500;
-    display: flex;
-    justify-content: center;
-    margin: 6px;
-  }
-
-  .frameBox {
-    display: flex; 
-    flex: 1;
-    margin: 6px;
-    justify-content: center;
-}
 
 .buttonContainer {
     border: thin solid whitesmoke;
     display: flex; 
-    flex: 1;  
     align-items: center;
     margin: 6px;
-    width: 500px;
+    width: 25em;
+    flex-direction: column;
 }
 
 .pinSelector {
