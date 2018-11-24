@@ -27,11 +27,11 @@ React Components for playing simple games
 
 - Bowling Game Screen 
 
-    ![View](/src/assets//bowling.png?raw=true "Screen Shot")
+    ![Screen Shot](/documentation/bowling.png?raw=true "Screen Shot")
 
 
 
 
 - Memory Game Screen 
 
-    ![View](/src/assets/memory.png?raw=true "Screen Shot")
+    ![Screen Shot](/documentation/memory.png?raw=true "Screen Shot")

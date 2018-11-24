@@ -6,14 +6,14 @@
     align-items: center;
     width: 100%;
    // background-color: whitesmoke;
-    min-width: 500px;
+   min-width: 300px;
   }
 
   .gameBoard {
     display: grid; 
     grid-template-columns: repeat(6, 1fr);
     grid-gap: .15rem;
-    margin: 10px;
+    margin: 2vmin;
     width: 100%;
   }
 
@@ -35,7 +35,7 @@
   }
 
   .gameDescription {
-    margin: 10px;
+    margin: 2vmin;
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
