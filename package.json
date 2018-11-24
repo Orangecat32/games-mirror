@@ -1,5 +1,6 @@
 {
-  "name": "games",
+  "name": "games-mirror",
+  "homepage": "https://orangecat32.github.io/games-mirror/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -72,7 +73,9 @@
     "gen:docs": "node scripts/generateComponentData.js",
     "gen:docs-watch": "npm run gen:docs -- --watch",
     "build:docs": "node scripts/build.js",
-    "test": "node scripts/test.js"
+    "test": "node scripts/test.js",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build" 
   },
   "eslintConfig": {
     "extends": "react-app"
