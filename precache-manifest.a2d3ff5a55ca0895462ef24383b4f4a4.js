@@ -1,7 +1,7 @@
 self.__precacheManifest = [
   {
-    "revision": "b49a90ee8c246157637b5ed142005d12",
-    "url": "/games-mirror/static/media/icons-16.b49a90ee.woff"
+    "revision": "9f52e4014adab067c8ef0f48ec1a4f43",
+    "url": "/games-mirror/static/media/icons-16.9f52e401.eot"
   },
   {
     "revision": "f9b38ca086a60ab3e169",
@@ -20,8 +20,8 @@ self.__precacheManifest = [
     "url": "/games-mirror/static/js/runtime~main.91fe0466.js"
   },
   {
-    "revision": "9f52e4014adab067c8ef0f48ec1a4f43",
-    "url": "/games-mirror/static/media/icons-16.9f52e401.eot"
+    "revision": "b49a90ee8c246157637b5ed142005d12",
+    "url": "/games-mirror/static/media/icons-16.b49a90ee.woff"
   },
   {
     "revision": "f9b38ca086a60ab3e169",
@@ -32,12 +32,12 @@ self.__precacheManifest = [
     "url": "/games-mirror/static/media/icons-16.d75e6370.ttf"
   },
   {
-    "revision": "c6e7874eefb0dacfd50dad73a2de5a17",
-    "url": "/games-mirror/static/media/icons-20.c6e7874e.eot"
-  },
-  {
     "revision": "9baec0ab0bc3096fb9fe865d6ae29d1d",
     "url": "/games-mirror/static/media/icons-20.9baec0ab.woff"
+  },
+  {
+    "revision": "c6e7874eefb0dacfd50dad73a2de5a17",
+    "url": "/games-mirror/static/media/icons-20.c6e7874e.eot"
   },
   {
     "revision": "76144f61f703b20c7f3b",
