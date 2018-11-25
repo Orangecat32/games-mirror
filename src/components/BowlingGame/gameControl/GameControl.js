@@ -1,7 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types'; 
+
 import {BallRoller} from './BallRoller';
 import { Button } from "@blueprintjs/core";
-
 import * as styles from './GameControl.scss';
 import {isGameComplete, currentFrame } from '../utils.js';
 
@@ -27,4 +28,10 @@ export const GameControl = (props) => {
       <Button text="Restart" onClick={() => props.appActions.newBowlingGame()} />
     </div>
   )
+}
+
+GameControl.propTypes = {
+  frames: PropTypes.array,
+  rollBowlingBall: PropTypes.func,
+  newBowlingGame: PropTypes.func
 }

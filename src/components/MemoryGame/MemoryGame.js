@@ -4,15 +4,16 @@ import PropTypes from 'prop-types';
 import { Icon, Button, Switch } from "@blueprintjs/core";
 import {gameDescription} from './constants';
 import styles from './MemoryGame.scss';
+import {Rules} from '../../shared/components/GameRules/Rules.js';
 
 export class MemoryGame extends React.Component {
   render() {
     const isGameOver = !this.props.cards.find(c => !c.isMatched);
     return (
-      <div className={styles.memoryGameContainer} >
-        <div className={styles.gameDescription}>
-          {gameDescription()}
-        </div> 
+      <div className={styles.container} >
+        <div className={styles.rulesContainer}>
+          <Rules content={gameDescription()} show={this.props.showRules} onClick={() => this.props.appActions.memoryToggleRules()}/>   
+        </div>
         { isGameOver &&
           <div className={styles.gameOver}>
             GAME OVER!
@@ -49,7 +50,7 @@ const MemoryCard = (props) => {
     <div className={styles.memoryCard} onClick={props.onClick}>
       {showIcon &&
         <div className={iconClass} >
-          <Icon icon={props.name}  iconSize={'calc(6vmin)'}  />
+          <Icon icon={props.name}  iconSize={'calc(8vmin)'}  />
         </div>
       }
     </div>
@@ -60,7 +61,9 @@ MemoryGame.propTypes = {
   showAll: PropTypes.bool,
   cards: PropTypes.array,
   onClick: PropTypes.func,
-  unflipAll: PropTypes.func
+  unflipAll: PropTypes.func,
+  showRules: PropTypes.bool,
+  memoryToggleRules: PropTypes.func
 };
 
 export default MemoryGame;
