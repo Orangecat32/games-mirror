@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types'; 
 
 import * as styles from './FrameBox.scss';
 import {TENTH_FRAME} from './constants.js';
@@ -27,6 +28,13 @@ export const FrameBox = (props) => {
       </div>
     </div>
   )};
+
+  FrameBox.propTypes = {
+    isCurrent: PropTypes.bool,
+    complete: PropTypes.bool,
+    totalScore: PropTypes.number,
+    frame: PropTypes.number
+  }
 
 export default FrameBox;
   

@@ -8,16 +8,15 @@ export const NINETH_FRAME = 8;
 
 export function gameDescription() {
     return (
-        <div>
-            <h3>Game Rules:</h3>
-            <ul>
-                <li>
-                    <a href="https://www.bowl.com/Welcome/Welcome_Home/Keeping_Score" target="_blank" rel="noopener noreferrer">How to score</a>
-                </li>
-                <li>
-                    <a href="https://www.pba.com/Resources/Bowling101" target="_blank" rel="noopener noreferrer">Rules of bowling</a>
-                </li>
-            </ul>
-        </div>
+      <div>
+        <ul>
+          <li>
+            <a href="https://www.bowl.com/Welcome/Welcome_Home/Keeping_Score" target="_blank" rel="noopener noreferrer">How to score</a>
+          </li>
+          <li>
+            <a href="https://www.pba.com/Resources/Bowling101" target="_blank" rel="noopener noreferrer">Rules of bowling</a>
+          </li>
+        </ul>
+      </div>
     );
 }
