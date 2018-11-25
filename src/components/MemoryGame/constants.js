@@ -6,8 +6,7 @@ export const ICON_COUNT = 12;
 
 export function gameDescription() {
     return (
-      <div>
-        <h3>Game Rules:</h3>
+      <div style={{wrap:'breakWord'}}>
         <ul>
           <li>At the start of the game, the player is presented with 24 facedown cards.</li>
           <li>On the reverse side of every card is an icon. There are twelve unique icons.</li>
