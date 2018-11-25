@@ -20,16 +20,16 @@ self.__precacheManifest = [
     "url": "/games-mirror/static/js/runtime~main.91fe0466.js"
   },
   {
-    "revision": "c6e7874eefb0dacfd50dad73a2de5a17",
-    "url": "/games-mirror/static/media/icons-20.c6e7874e.eot"
+    "revision": "9f52e4014adab067c8ef0f48ec1a4f43",
+    "url": "/games-mirror/static/media/icons-16.9f52e401.eot"
   },
   {
     "revision": "70cc8fb2b1b8b08d4b4d",
     "url": "/games-mirror/static/js/main.70cc8fb2.chunk.js"
   },
   {
-    "revision": "9f52e4014adab067c8ef0f48ec1a4f43",
-    "url": "/games-mirror/static/media/icons-16.9f52e401.eot"
+    "revision": "c6e7874eefb0dacfd50dad73a2de5a17",
+    "url": "/games-mirror/static/media/icons-20.c6e7874e.eot"
   },
   {
     "revision": "d75e6370295e046dd0b170ee42c3fa44",
