@@ -1,16 +1,16 @@
 {
-  "main.css": "/games-mirror/static/css/main.350b417a.chunk.css",
-  "main.js": "/games-mirror/static/js/main.0a8d4663.chunk.js",
-  "main.js.map": "/games-mirror/static/js/main.0a8d4663.chunk.js.map",
+  "main.css": "/games-mirror/static/css/main.326f1926.chunk.css",
+  "main.js": "/games-mirror/static/js/main.5c4b5380.chunk.js",
+  "main.js.map": "/games-mirror/static/js/main.5c4b5380.chunk.js.map",
   "static/css/1.b9778b2d.chunk.css": "/games-mirror/static/css/1.b9778b2d.chunk.css",
   "static/js/1.20608155.chunk.js": "/games-mirror/static/js/1.20608155.chunk.js",
   "static/js/1.20608155.chunk.js.map": "/games-mirror/static/js/1.20608155.chunk.js.map",
   "runtime~main.js": "/games-mirror/static/js/runtime~main.91fe0466.js",
   "runtime~main.js.map": "/games-mirror/static/js/runtime~main.91fe0466.js.map",
-  "static/media/index.css": "/games-mirror/static/media/icons-16.b49a90ee.woff",
-  "static/css/main.350b417a.chunk.css.map": "/games-mirror/static/css/main.350b417a.chunk.css.map",
+  "static/media/index.css": "/games-mirror/static/media/icons-20.c6e7874e.eot",
   "static/css/1.b9778b2d.chunk.css.map": "/games-mirror/static/css/1.b9778b2d.chunk.css.map",
+  "static/css/main.326f1926.chunk.css.map": "/games-mirror/static/css/main.326f1926.chunk.css.map",
   "index.html": "/games-mirror/index.html",
-  "precache-manifest.7755d43e436b6b8cc75990dc40d870e2.js": "/games-mirror/precache-manifest.7755d43e436b6b8cc75990dc40d870e2.js",
+  "precache-manifest.c2ff43310da84c25d57dee8089187bd2.js": "/games-mirror/precache-manifest.c2ff43310da84c25d57dee8089187bd2.js",
   "service-worker.js": "/games-mirror/service-worker.js"
 }
