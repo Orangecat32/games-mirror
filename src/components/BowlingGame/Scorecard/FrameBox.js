@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types'; 
 
 import * as styles from './FrameBox.scss';
-import {TENTH_FRAME} from './constants.js';
-import {scoreBox1, scoreBox2, scoreBox3} from './utils.js';
+import {TENTH_FRAME} from '../constants.js';
+import {scoreBox1, scoreBox2, scoreBox3} from '../utils.js';
 
 export const FrameBox = (props) => {
   const frameClass = `${styles.frameBox} ${props.frame === TENTH_FRAME ? styles.tenth : ''}  ${props.isCurrent ? styles.shadow : ''}`;
