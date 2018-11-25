@@ -1,4 +1,4 @@
-import {SHOW_ALL, CLICK_CARD, UNFLIP_ALL, START_MEMORY_GAME} from "../actions/index";
+import {SHOW_ALL, CLICK_CARD, UNFLIP_ALL, START_MEMORY_GAME, MEMORY_TOGGLE_RULES} from "../actions/index";
 import {createCards, clickCard, hasUnmatched} from '../components/MemoryGame/utils';
 
 
@@ -16,6 +16,8 @@ import {createCards, clickCard, hasUnmatched} from '../components/MemoryGame/uti
         return !hasChanged ? state : Object.assign({}, state, {cards: newCards, clickCount: state.clickCount + 1, pause: unmatched});
       case SHOW_ALL:
         return Object.assign({}, state, {showAll: !state.showAll});
+      case MEMORY_TOGGLE_RULES:
+        return Object.assign({}, state, {showRules: !state.showRules});
       default: 
         return state;
     }
