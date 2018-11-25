@@ -11,7 +11,7 @@ export class MemoryGame extends React.Component {
     const isGameOver = !this.props.cards.find(c => !c.isMatched);
     return (
       <div className={styles.container} >
-        <Rules content={gameDescription()} />
+        <Rules content={gameDescription()} show={this.props.showRules}/>
         { isGameOver &&
           <div className={styles.gameOver}>
             GAME OVER!

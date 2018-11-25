@@ -16,7 +16,7 @@ export class BowlingGame extends React.Component {
 
     return (
      <div className={styles.container}>
-        <Rules content={gameDescription()} />
+        <Rules content={gameDescription()} show={this.props.showRules}/>
         <GameControl {...this.props} />
         <div className={styles.gameBoardContainer}>
           {
