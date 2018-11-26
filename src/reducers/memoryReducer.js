@@ -10,10 +10,17 @@ import {createCards, clickCard, hasUnmatched} from '../components/MemoryGame/uti
         const ufc = state.cards.map(c => c.isFlipped ? Object.assign({}, c , {isFlipped: false}) : c);
         return  Object.assign({}, state, {cards: ufc, pause: false });
       case CLICK_CARD:
-        const newCards = clickCard(state.cards, action.payload);
+        const clickedCard = action.payload;
+        const newCards = clickCard(state.cards, clickedCard);
         const hasChanged = (newCards || []).length !== 0;
         const unmatched = hasUnmatched(newCards);
-        return !hasChanged ? state : Object.assign({}, state, {cards: newCards, clickCount: state.clickCount + 1, pause: unmatched});
+        return !hasChanged ? state : Object.assign({}, state, 
+          {
+            cards: newCards, 
+            clickCount: state.clickCount + 1, 
+            pause: unmatched, 
+            history: state.history.concat(clickedCard)
+          });
       case SHOW_ALL:
         return Object.assign({}, state, {showAll: !state.showAll});
       case MEMORY_TOGGLE_RULES:
