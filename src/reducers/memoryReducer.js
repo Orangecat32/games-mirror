@@ -1,4 +1,4 @@
-import {SHOW_ALL, CLICK_CARD, UNFLIP_ALL, START_MEMORY_GAME, MEMORY_TOGGLE_RULES} from "../actions/index";
+import {SHOW_ALL, CLICK_CARD, UNFLIP_ALL, START_MEMORY_GAME, MEMORY_TOGGLE_RULES, MEMORY_AUTOPLAY_MODE} from "../actions/index";
 import {createCards, clickCard, hasUnmatched} from '../components/MemoryGame/utils';
 
 
@@ -13,6 +13,10 @@ import {createCards, clickCard, hasUnmatched} from '../components/MemoryGame/uti
         const clickedCard = action.payload;
         const clickCount = state.clickCount + 1;
         const result = clickCard(state.cards, clickedCard, clickCount);
+        if(result === null) {
+          return state;
+        }
+
         const hasChanged = (result.cards || []).length !== 0;
         const unmatched = hasUnmatched(result.cards);
         return !hasChanged ? state : Object.assign({}, state, 
@@ -24,6 +28,8 @@ import {createCards, clickCard, hasUnmatched} from '../components/MemoryGame/uti
           });
       case SHOW_ALL:
         return Object.assign({}, state, {showAll: !state.showAll});
+      case MEMORY_AUTOPLAY_MODE:
+        return Object.assign({}, state, {autoplayMode: !state.autoplayMode});
       case MEMORY_TOGGLE_RULES:
         return Object.assign({}, state, {showRules: !state.showRules});
       default: 

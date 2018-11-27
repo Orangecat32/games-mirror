@@ -18,6 +18,12 @@ export class GameControl extends React.Component {
           style={{marginTop:'6px'}}
           onChange={() => this.props.appActions.showAll()}
         />
+         {/* <Switch 
+          checked={this.props.autoplayMode} 
+          label="Autoplay" 
+          style={{marginTop:'6px'}}
+          onChange={() => this.props.appActions.autoplayMode()}
+        /> */}
       </div>
     );
   }
@@ -26,6 +32,7 @@ export class GameControl extends React.Component {
 GameControl.propTypes = {
   showAll: PropTypes.bool,
   clickCount: PropTypes.number,
+  autoplayMode: PropTypes.bool,
   startGame: PropTypes.func
 };
 

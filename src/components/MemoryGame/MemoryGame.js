@@ -32,6 +32,7 @@ MemoryGame.propTypes = {
   cards: PropTypes.array,
   onClick: PropTypes.func,
   unflipAll: PropTypes.func,
+  autoplayMode: PropTypes.bool,
   showRules: PropTypes.bool,
   memoryToggleRules: PropTypes.func
 };
