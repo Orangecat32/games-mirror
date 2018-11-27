@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types'; 
 
 import {gameDescription} from './constants';
-import {GameControl} from './GameControl/GameControl';
+import {GameControl} from './GameControls/GameControl';
 import {Scorecard} from './Scorecard/Scorecard';
 import {Rules} from '../../shared/components/GameRules/Rules.js';
 import * as styles from './BowlingGame.scss';
