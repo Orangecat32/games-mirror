@@ -20,6 +20,7 @@ export const createCards = (randomArray) => {
 
 export const randomCardArray = () => randomArray(ICON_COUNT * 2);
 
+export const hasUnmatched = (cards) => cards.filter((c) => c.isFlipped && !c.isMatched).length === 2;
 
 export const clickCard = (cards, thisCard, clickCount) => {
 
@@ -45,7 +46,10 @@ export const clickCard = (cards, thisCard, clickCount) => {
 
   if(flippedCard.name === thisCard.name) {
     // user matched the card, set flipped and matched for those 2 matching cards
-    const cc = Object.assign({}, thisCard , {isFlipped: false, isMatched: true }) ;
+    const cc = Object.assign({}, thisCard , {
+      //exposedClicks : thisCard.exposedClicks.concat(clickCount),
+      isFlipped: false, 
+      isMatched: true }) ;
     const newCards = cards.map(c => c.name !== thisCard.name 
         ? c 
         : Object.assign({}, c.index === thisCard.index ? cc : c , {isFlipped: false, isMatched: true}));
@@ -62,12 +66,10 @@ export const clickCard = (cards, thisCard, clickCount) => {
   return {cards: cards.map(c => c.index === cc.index ? cc : c), clickedCard: cc };
 }
 
-export const hasUnmatched = (cards) => cards.filter((c) => c.isFlipped && !c.isMatched).length === 2;
 
-//  unfinished.  usage:  gameScore(state.memoryGame.history)
+//  this methosd is still a work in progress.  usage:  gameScore(state.memoryGame.history)
 export const gameScore = (clickHistory) => {
   // TODO: compute how well this user performed based upon the click history
-  // work in progress
 
   let matches = [];
   for(let i = 0; i < clickHistory.length; i++) {
@@ -81,17 +83,42 @@ export const gameScore = (clickHistory) => {
     }
   }
 
-  console.log('matches:', matches);
+  //  last match is easy
+  const lastMatch =  matches.filter(m => m.matchCount === 11);  
+  let remains = matches.filter(m => !lastMatch.map(p => p.name).includes(m.name));
 
-  const result = {
-    luck: matches.filter(m => m.second === 0 && m.matchCount < 11).map(p => p.name), 
-    last: matches.filter(m => m.matchCount === 11).map(p => p.name),  
-    perfect: matches.filter(m => m.second === 1 && m.matchCount < 11).map(p => p.name),  
-    level1: matches.filter(m => m.second === 2 && m.matchCount < 11).map(p => p.name),  
-    level2: matches.filter(m => m.second > 2 && m.matchCount < 11).map(p => p.name),  
-  }
+  // count the lucky matches, then remove them
+  const luck = remains.filter(m => m.second === 0); 
+  remains = remains.filter(m => !luck.map(p => p.name).includes(m.name));
 
-  console.log('result:', result);
-  return 0;
+  // count the perfect matches, then remove them
+  const level1 = remains.filter(m => (m.second === 1 && m.first === 2) || (m.first === 1 && m.second === 2));
+  remains = remains.filter(m => !level1.map(p => p.name).includes(m.name));
+
+  //counts near perfect matches
+  const level2 = remains.filter(m => m.second < 2 || m.first < 2);
+  remains = remains.filter(m => !level2.map(p => p.name).includes(m.name));
+
+  // count matches where both cards seen a couple of times
+  const level3 = remains.filter(m => m.second < 3 && m.first < 3);
+
+  // count of all the matches where user turned both cards over serveral times
+  const level4 = remains = remains.filter(m => !level3.map(p => p.name).includes(m.name));
+
+  const maxSeen = Math.max(...matches.map(m => m.first), ...matches.map(m => m.second));
+
+  const flipCounts = matches.map(m => m.first).concat(matches.map(m => m.second)).sort().reverse();
+
+  const result = {luck, level1, level2, level3, level4, lastMatch, maxSeen, flipCounts};
+
+  //console.log('result:', maxSeen, flipCounts, result);
+  return result;
+}
+
+export const autoPlay = (cards) => {
+  let clickCount = 0;
+  
+
+
 }
 
