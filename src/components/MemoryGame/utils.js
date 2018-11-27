@@ -105,20 +105,25 @@ export const gameScore = (clickHistory) => {
   // count of all the matches where user turned both cards over serveral times
   const level4 = remains = remains.filter(m => !level3.map(p => p.name).includes(m.name));
 
+  // what is the most times a card was clicked?
   const maxSeen = Math.max(...matches.map(m => m.first), ...matches.map(m => m.second));
 
-  const flipCounts = matches.map(m => m.first).concat(matches.map(m => m.second)).sort().reverse();
+  // which cards were clicked the most?
+  const flipCounts = matches.sort((a, b) => {
+    const ma = Math.max(a.first, a.second);
+    const mb = Math.max(b.first, b.second);
+
+    if (ma === mb ) {
+      const at = a.first + a.second;
+      const bt = b.first + b.second;
+      return  at === bt ? 0 : at < bt ? 1 : -1;
+    }
+
+    return ma < mb ? 1 : -1;
+  });
 
   const result = {luck, level1, level2, level3, level4, lastMatch, maxSeen, flipCounts};
 
-  //console.log('result:', maxSeen, flipCounts, result);
+  console.log('result:', maxSeen, flipCounts, result);
   return result;
 }
-
-export const autoPlay = (cards) => {
-  let clickCount = 0;
-  
-
-
-}
-
