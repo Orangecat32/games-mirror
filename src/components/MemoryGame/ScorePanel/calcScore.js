@@ -1,8 +1,12 @@
 
 
 //  this methosd is still a work in progress.  usage:  gameScore(state.memoryGame.history)
-export const scoreGame = (clickHistory) => {
-    // TODO: compute how well this user performed based upon the click history
+export const calcScore = (clickHistory) => {
+    if(!clickHistory) {
+      return undefined;
+    }
+
+    // compute how well this user performed based upon the click history
   
     let matches = [];
     for(let i = 0; i < clickHistory.length; i++) {
@@ -61,4 +65,3 @@ export const scoreGame = (clickHistory) => {
     console.log('result:', result);
     return result;
   }
-  

@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 
 import { Button, Switch } from "@blueprintjs/core";
 import styles from './GameControl.scss';
-import {scoreGame} from '../scoreGame.js';
+import {calcScore} from '../ScorePanel/calcScore.js';
 
 export class GameControl extends React.Component {
   render() {
-    scoreGame(this.props.history);
+    calcScore(this.props.history);
     return (
       <div className={styles.memoryGameControls}>
         <Button text="Restart" onClick={() => this.props.appActions.startGame()} />

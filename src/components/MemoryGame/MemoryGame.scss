@@ -33,6 +33,7 @@
     display: flex;
     justify-content: center;
     margin: 6px;
+    align-items: center;
   }
 
   .gameDescription {
@@ -80,4 +81,9 @@
     margin-left: 10%;
     display: flex;
     width: 90%;
+  }
+
+  .infoIcon {
+    margin-bottom: 8px;
+    margin-left: 8px;
   }
