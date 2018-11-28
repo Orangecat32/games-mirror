@@ -23,13 +23,13 @@ import {createCards, clickCard, hasUnmatched} from '../components/MemoryGame/uti
           {
             cards: result.cards, 
             clickCount,
-            pause: unmatched, 
+            pause: unmatched,
             history: state.history.concat(result.clickedCard)
           });
       case SHOW_ALL:
         return Object.assign({}, state, {showAll: !state.showAll});
       case MEMORY_AUTOPLAY_MODE:
-        return Object.assign({}, state, {autoplayMode: action.payload});
+        return Object.assign({}, state, {autoplayMode: action.payload, pause: false});
       case MEMORY_TOGGLE_RULES:
         return Object.assign({}, state, {showRules: !state.showRules});
       default: 

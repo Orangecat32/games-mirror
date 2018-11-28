@@ -1,7 +1,7 @@
 
 
 //  this methosd is still a work in progress.  usage:  gameScore(state.memoryGame.history)
-export const gameScore = (clickHistory) => {
+export const scoreGame = (clickHistory) => {
     // TODO: compute how well this user performed based upon the click history
   
     let matches = [];
@@ -21,21 +21,22 @@ export const gameScore = (clickHistory) => {
     let remains = matches.filter(m => !lastMatch.map(p => p.name).includes(m.name));
   
     // count the lucky matches, then remove them
-    const luck = remains.filter(m => m.second === 0); 
+    const luck = remains.filter(m => m.second === 1); 
     remains = remains.filter(m => !luck.map(p => p.name).includes(m.name));
   
-    // count the perfect matches, then remove them
-    const level1 = remains.filter(m => (m.second === 1 && m.first === 2) || (m.first === 1 && m.second === 2));
+    // count the perfect matches, then remove them from the scoring
+    const level1 = remains.filter(m => m.first <= 2 && m.second <= 2);
+     // (m.second === 1 && m.first === 2) || (m.first === 1 && m.second === 2) || (m.first === 2 && m.second === 2));
     remains = remains.filter(m => !level1.map(p => p.name).includes(m.name));
   
-    //counts near perfect matches
-    const level2 = remains.filter(m => m.second < 2 || m.first < 2);
+    // count near perfect matches, then remove from scoring
+    const level2 = remains.filter(m => m.second < 3 || m.first < 3);
     remains = remains.filter(m => !level2.map(p => p.name).includes(m.name));
   
-    // count matches where both cards seen a couple of times
-    const level3 = remains.filter(m => m.second < 3 && m.first < 3);
+    // count matches where both cards seen a few times
+    const level3 = remains.filter(m => m.second <= 3 || m.first <= 3);
   
-    // count of all the matches where user turned both cards over serveral times
+    // all the rest
     const level4 = remains = remains.filter(m => !level3.map(p => p.name).includes(m.name));
   
     // what is the most times a card was clicked?
@@ -57,7 +58,7 @@ export const gameScore = (clickHistory) => {
   
     const result = {luck, level1, level2, level3, level4, lastMatch, maxSeen, flipCounts};
   
-    console.log('result:', maxSeen, flipCounts, result);
+    console.log('result:', result);
     return result;
   }
   

@@ -14,9 +14,9 @@ export const showAll = (show) => ({type: SHOW_ALL, show});
 export const memoryToggleRules = () => ({type: MEMORY_TOGGLE_RULES});
 
 export const clickCard = card => (dispatch, getState) => {
-  if(getState().memoryGame.pause || card.isMatched || card.isFlipped) {
+  const s = getState().memoryGame;
+  if(s.pause || card.isMatched || card.isFlipped || s.autoplayMode === true) {
     //  ignore clicks when paused or card is already turned over
-    console.log('ignore click');
     return;
   }
 
@@ -30,8 +30,7 @@ export const clickCard = card => (dispatch, getState) => {
 }
 
 export const autoplayMode = mode => (dispatch, getState) => {
-  const s = getState().memoryGame; 
-  dispatch({type: MEMORY_AUTOPLAY_MODE, payload: !s.autoplayMode});
+  dispatch({type: MEMORY_AUTOPLAY_MODE, payload: !getState().memoryGame.autoplayMode});
 
   let timer = null;
   clearInterval(timer);

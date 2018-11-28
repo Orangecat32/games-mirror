@@ -47,7 +47,7 @@ export const clickCard = (cards, thisCard, clickCount) => {
   if(flippedCard.name === thisCard.name) {
     // user matched the card, set flipped and matched for those 2 matching cards
     const cc = Object.assign({}, thisCard , {
-      //exposedClicks : thisCard.exposedClicks.concat(clickCount),
+      exposedClicks : thisCard.exposedClicks.concat(clickCount),
       isFlipped: false, 
       isMatched: true }) ;
 
