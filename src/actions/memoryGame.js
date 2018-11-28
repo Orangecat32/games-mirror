@@ -1,5 +1,4 @@
-
-import {randomCardArray} from '../components/MemoryGame/utils';
+import {randomCardArray, hasUnmatched, isGameComplete} from '../components/MemoryGame/utils';
 import {suggestNextCard} from '../components/MemoryGame/autoplay';
 
 export const START_MEMORY_GAME = 'START_MEMORY_GAME';
@@ -17,10 +16,9 @@ export const memoryToggleRules = () => ({type: MEMORY_TOGGLE_RULES});
 export const clickCard = card => (dispatch, getState) => {
   if(getState().memoryGame.pause || card.isMatched || card.isFlipped) {
     //  ignore clicks when paused or card is already turned over
+    console.log('ignore click');
     return;
   }
-
-  //console.log('suggest', suggestNextCard(getState().memoryGame.cards));
 
   dispatch({type: CLICK_CARD, payload:card});
   if (getState().memoryGame.pause) {
@@ -31,8 +29,27 @@ export const clickCard = card => (dispatch, getState) => {
   }
 }
 
-
 export const autoplayMode = mode => (dispatch, getState) => {
-  const s = getState().memoryGame;
-  dispatch({type: MEMORY_AUTOPLAY_MODE, payload: s.autoplayMode});
+  const s = getState().memoryGame; 
+  dispatch({type: MEMORY_AUTOPLAY_MODE, payload: !s.autoplayMode});
+
+  let timer = null;
+  clearInterval(timer);
+  timer = setInterval(() => 
+    {
+      const s = getState().memoryGame; 
+      if(isGameComplete(s.cards)) {
+        clearInterval(timer);
+        dispatch({type: MEMORY_AUTOPLAY_MODE, payload: false});
+      }
+      else if(!s.autoplayMode) {
+        clearInterval(timer);
+      } 
+      else if(hasUnmatched(s.cards)) {
+        dispatch(unflipAll());
+      } 
+      else {
+        dispatch({type: CLICK_CARD, payload: suggestNextCard(s.cards)});
+      }
+    }, 200);
 }

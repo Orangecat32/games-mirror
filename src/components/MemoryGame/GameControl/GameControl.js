@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { Button, Switch } from "@blueprintjs/core";
 import styles from './GameControl.scss';
-//import {gameScore} from '../utils.js';
+//import {gameScore} from '../scoreGame.js';
 
 export class GameControl extends React.Component {
   render() {
@@ -18,12 +18,12 @@ export class GameControl extends React.Component {
           style={{marginTop:'6px'}}
           onChange={() => this.props.appActions.showAll()}
         />
-         {/* <Switch 
+         <Switch 
           checked={this.props.autoplayMode} 
           label="Autoplay" 
           style={{marginTop:'6px'}}
           onChange={() => this.props.appActions.autoplayMode()}
-        /> */}
+        />
       </div>
     );
   }

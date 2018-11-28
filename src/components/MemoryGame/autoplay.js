@@ -1,4 +1,5 @@
 // utility functions for autoplay feature
+import {isGameComplete} from './utils'
 
 export const exposedMatchedPair = (cards) => {
   // if there are two matching cards that are currently face down, return those two cards
@@ -22,11 +23,12 @@ export const exposedMatchedPair = (cards) => {
 export const nextUnexposed = (cards, card = null) => {
   // return first card that has not been exposed
   // if card supplied, exclude that card
-  return card 
-    ? cards.find(c => c.exposedClicks.length === 0 && !c.isMatched && !c.isFlipped && card.index !== c.index)
-    : cards.find(c => c.exposedClicks.length === 0 && !c.isMatched && !c.isFlipped); 
-} 
 
+  /// TODO: possible bug: should not have zero exposedclicks while isMatched is true
+  return card 
+    ? cards.find(c => c.exposedClicks.length === 0 && card.index !== c.index && !c.isMatched)
+    : cards.find(c => c.exposedClicks.length === 0 && !c.isMatched); 
+} 
 
 export const secondCard = (cards, firstCard) => {
   // if there is a face down match for the firstCard that is previously exposed, return that card
@@ -34,13 +36,11 @@ export const secondCard = (cards, firstCard) => {
   return sc.length > 0 ? sc[0] : nextUnexposed(cards, firstCard);
 } 
 
-
 export const suggestNextCard = (cards) => {
-  const cc = cards.find(c => !c.isMatched);
-  if(!cc){
+  if(isGameComplete(cards)) {
     return null;
   }
-
+  
   const flippedCard = cards.find(c => c.isFlipped);
   let nextCard = null;
 

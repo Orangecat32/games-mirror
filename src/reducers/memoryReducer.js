@@ -29,7 +29,7 @@ import {createCards, clickCard, hasUnmatched} from '../components/MemoryGame/uti
       case SHOW_ALL:
         return Object.assign({}, state, {showAll: !state.showAll});
       case MEMORY_AUTOPLAY_MODE:
-        return Object.assign({}, state, {autoplayMode: !state.autoplayMode});
+        return Object.assign({}, state, {autoplayMode: action.payload});
       case MEMORY_TOGGLE_RULES:
         return Object.assign({}, state, {showRules: !state.showRules});
       default: 
