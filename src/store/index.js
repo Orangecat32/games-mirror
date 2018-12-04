@@ -16,6 +16,8 @@ export const initialState = {
 
 export const buildStore = () => {
   let middleware = [thunk];
+
+  // turn off the noise here
   if (process.env.NODE_ENV !== 'production') {
     middleware.push(createLogger())
   }

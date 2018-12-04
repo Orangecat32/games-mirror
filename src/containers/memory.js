@@ -3,7 +3,7 @@ import {bindActionCreators} from 'redux';
 import {connect} from "react-redux";
 
 import * as myActions from "../actions/memoryGame.js";
-import {MemoryGame} from "../components/MemoryGame/MemoryGame.js";
+import {MemoryGame} from "../components/MemoryGame/MemoryGame";
 
 function mapStateToProps(state) {
     return {

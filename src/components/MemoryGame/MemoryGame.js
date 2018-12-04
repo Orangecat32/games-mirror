@@ -1,24 +1,29 @@
 import React from 'react';
 import PropTypes from 'prop-types'; 
+import { Icon, Popover } from "@blueprintjs/core";
 
 import {gameDescription} from './constants';
 import {GameControl} from './GameControl/GameControl';
 import {Gameboard} from './Gameboard/Gameboard';
 import styles from './MemoryGame.scss';
 import {Rules} from '../../shared/components/GameRules/Rules.js';
+import {isGameComplete} from './utils';
+import {ScorePanel} from './ScorePanel/ScorePanel.js'
 
 export class MemoryGame extends React.Component {
   render() {
-    const isGameOver = !this.props.cards.find(c => !c.isMatched);
     return (
       <div className={styles.container} >
         <div className={styles.rulesContainer}>
           <Rules content={gameDescription()} show={this.props.showRules} onClick={() => this.props.appActions.memoryToggleRules()}/>   
         </div>
-        { isGameOver &&
-          <div className={styles.gameOver}>
-            GAME OVER!
-          </div>
+        {  isGameComplete(this.props.cards)  &&
+        <div className={styles.gameOver} >
+          <div>GAME OVER!</div>
+          <Popover content={ScorePanel(this.props.history)} minimal >
+            <Icon icon="info-sign"  iconSize={'calc(.65em)'} className={styles.infoIcon} />
+          </Popover>
+        </div>
         }
         <GameControl {...this.props} />
         <Gameboard {...this.props} />
@@ -32,6 +37,7 @@ MemoryGame.propTypes = {
   cards: PropTypes.array,
   onClick: PropTypes.func,
   unflipAll: PropTypes.func,
+  autoplayMode: PropTypes.bool,
   showRules: PropTypes.bool,
   memoryToggleRules: PropTypes.func
 };

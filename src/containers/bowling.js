@@ -3,7 +3,7 @@ import {bindActionCreators} from 'redux';
 import {connect} from "react-redux";
 
 import * as myActions from "../actions/bowlingGame.js";
-import {BowlingGame} from "../components/BowlingGame/BowlingGame.js";
+import {BowlingGame} from "../components/BowlingGame/BowlingGame";
 
 function mapStateToProps(state) {
     return {

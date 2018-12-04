@@ -7,5 +7,6 @@ export const init = () => (
         clickCount: 0, 
         pause: false, 
         showRules: true,
-        history: []
+        history: [],
+        autoplayMode: false
     });

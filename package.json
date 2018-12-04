@@ -4,10 +4,10 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@babel/core": "7.1.2",
-    "@blueprintjs/core": "^3.7.0",
+    "@babel/core": "7.1.6",
+    "@blueprintjs/core": "^3.9.0",
     "@blueprintjs/docs-theme": "^3.0.3",
-    "@blueprintjs/icons": "^3.2.0",
+    "@blueprintjs/icons": "^3.3.0",
     "@svgr/webpack": "2.4.1",
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "9.0.0",

@@ -3,9 +3,11 @@ import PropTypes from 'prop-types';
 
 import { Button, Switch } from "@blueprintjs/core";
 import styles from './GameControl.scss';
+import {calcScore} from '../ScorePanel/calcScore.js';
 
 export class GameControl extends React.Component {
   render() {
+    calcScore(this.props.history);
     return (
       <div className={styles.memoryGameControls}>
         <Button text="Restart" onClick={() => this.props.appActions.startGame()} />
@@ -16,6 +18,12 @@ export class GameControl extends React.Component {
           style={{marginTop:'6px'}}
           onChange={() => this.props.appActions.showAll()}
         />
+         <Switch 
+          checked={this.props.autoplayMode} 
+          label="Autoplay" 
+          style={{marginTop:'6px'}}
+          onChange={() => this.props.appActions.autoplayMode()}
+        />
       </div>
     );
   }
@@ -24,6 +32,7 @@ export class GameControl extends React.Component {
 GameControl.propTypes = {
   showAll: PropTypes.bool,
   clickCount: PropTypes.number,
+  autoplayMode: PropTypes.bool,
   startGame: PropTypes.func
 };
 
