@@ -4,14 +4,16 @@ import { createLogger } from 'redux-logger'
 
 import * as memoryGame from './memory';
 import * as bowlingGame from './bowling';
-import * as appConstants from '../constants';
+import * as appConstants from '../components/App/constants';
+import * as rappers from './rappers';
 
 import reducer from "../reducers";
 
 export const initialState = {
-    selectedGame: appConstants.MEMORY_GAME,
+    selectedGame: appConstants.RAPPERS_DB,
     memoryGame: memoryGame.init(),
-    bowlingGame: bowlingGame.init()
+    bowlingGame: bowlingGame.init(),
+    rappers: rappers.init()
   };
 
 export const buildStore = () => {

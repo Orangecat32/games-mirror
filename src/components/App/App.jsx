@@ -4,14 +4,20 @@ import {connect} from "react-redux";
 import PropTypes from 'prop-types'; 
 import { Button } from "@blueprintjs/core";
 
-import * as myActions from "./actions/index";
+import * as myActions from "../../actions/index";
 import { Alignment, Classes, Navbar, NavbarDivider,  NavbarGroup,  NavbarHeading} from "@blueprintjs/core";
 import styles from './App.scss';
 import * as constants from './constants.js';
-import MemoryGameContainer from './containers/memory.js';
-import BowlingGameContainer from './containers/bowling.js';
+import MemoryGameContainer from '../../containers/memory';
+import BowlingGameContainer from '../../containers/bowling';
+import RappersContainer from '../../containers/rappers';
 
 class App extends Component {
+
+  onComponentDidMount() {
+
+  }
+  
   gameSelectionButtons() {
     return (
       <div> 
@@ -32,10 +38,9 @@ class App extends Component {
   render() {
     return (
       <div className={styles.app}>
-    
         <Navbar>
           <NavbarGroup align={Alignment.LEFT}>
-            <NavbarHeading>Game Room</NavbarHeading>
+            <NavbarHeading>Roy's Room</NavbarHeading>
             <NavbarDivider />
             {this.gameSelectionButtons()}
           </NavbarGroup>
@@ -46,6 +51,9 @@ class App extends Component {
           }
           {this.props.selectedGame === constants.BOWLING_GAME &&
             <BowlingGameContainer />
+          }
+          {this.props.selectedGame === constants.RAPPERS_DB &&
+            <RappersContainer />
           }
           {this.props.selectedGame === constants.MAZE_GAME &&
             <UnderConstruction text={`${this.props.selectedGame} is under construction`} />
