@@ -1,7 +1,7 @@
 {
   "main.css": "/games-mirror/static/css/main.b6280c23.chunk.css",
-  "main.js": "/games-mirror/static/js/main.879f733a.chunk.js",
-  "main.js.map": "/games-mirror/static/js/main.879f733a.chunk.js.map",
+  "main.js": "/games-mirror/static/js/main.d7b15ea9.chunk.js",
+  "main.js.map": "/games-mirror/static/js/main.d7b15ea9.chunk.js.map",
   "static/css/1.55d8984b.chunk.css": "/games-mirror/static/css/1.55d8984b.chunk.css",
   "static/js/1.4d5d4ace.chunk.js": "/games-mirror/static/js/1.4d5d4ace.chunk.js",
   "static/js/1.4d5d4ace.chunk.js.map": "/games-mirror/static/js/1.4d5d4ace.chunk.js.map",
@@ -11,6 +11,6 @@
   "static/css/1.55d8984b.chunk.css.map": "/games-mirror/static/css/1.55d8984b.chunk.css.map",
   "static/css/main.b6280c23.chunk.css.map": "/games-mirror/static/css/main.b6280c23.chunk.css.map",
   "index.html": "/games-mirror/index.html",
-  "precache-manifest.e8b6464b8f542434045eb9ca21b148f2.js": "/games-mirror/precache-manifest.e8b6464b8f542434045eb9ca21b148f2.js",
+  "precache-manifest.1060bc26edd937b853fe1918ab98312e.js": "/games-mirror/precache-manifest.1060bc26edd937b853fe1918ab98312e.js",
   "service-worker.js": "/games-mirror/service-worker.js"
 }
