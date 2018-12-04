@@ -34,7 +34,7 @@ export const calcScore = (clickHistory) => {
     remains = remains.filter(m => !level1.map(p => p.name).includes(m.name));
   
     // count near perfect matches, then remove from scoring
-    const level2 = remains.filter(m => m.second < 3 || m.first < 3);
+    let level2 = remains.filter(m => m.second < 3 || m.first < 3);
     remains = remains.filter(m => !level2.map(p => p.name).includes(m.name));
   
     // count matches where both cards seen a few times
@@ -59,9 +59,10 @@ export const calcScore = (clickHistory) => {
   
       return ma < mb ? 1 : -1;
     });
-  
+
+  // add the final clicks to level2
+    level2 = level2.concat(lastMatch);
     const result = {luck, level1, level2, level3, level4, lastMatch, maxSeen, flipCounts};
   
-    console.log('result:', result);
     return result;
   }

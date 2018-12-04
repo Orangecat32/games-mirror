@@ -8,7 +8,7 @@ export const ScorePanel = (clickHistory) => {
 
   return (
     <div className={styles.container} >
-      <div className={styles.heading}>Game Summary</div>
+      <div className={styles.heading}>Click Efficiency</div>
       <div className={styles.items}>
         <div className={styles.row}>
           <div className={styles.title}>Excellent</div>
