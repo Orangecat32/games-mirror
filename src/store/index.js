@@ -10,7 +10,7 @@ import * as rappers from './rappers';
 import reducer from "../reducers";
 
 export const initialState = {
-    selectedGame: appConstants.RAPPERS_DB,
+    selectedGame: appConstants.MEMORY_GAME,
     memoryGame: memoryGame.init(),
     bowlingGame: bowlingGame.init(),
     rappers: rappers.init()

@@ -20,3 +20,11 @@ export const randomArray = (length) => {
     }
     return arr;
   }
+
+export const isNullOrWhitespace = ( input ) => {
+  if (typeof input === 'undefined' || input == null || typeof input !== 'string') return true;
+  return input.replace(/\s/g, '').length < 1;
+}
+
+export const isValidDate = (d) => (d instanceof Date && !isNaN(d));
+

@@ -2,16 +2,18 @@
 import {bindActionCreators} from 'redux';
 import {connect} from "react-redux";
 
-import * as myActions from "../actions/rappers.js";
-import {RapperInfo} from "../components/Rappers/RapperInfo";
+import * as myActions from "../actions/rappersActions.js";
+import {RapperInfo} from "../components/Rappers/ArtistList/RapperInfo";
+import {filteredArtists} from "../reducers/rappersReducer";
 
-function mapStateToProps(state) {
+export function mapStateToProps(state) {
     return {
-      ...state.rappers
+      ...state.rappers,
+      filteredArtists: filteredArtists(state)
     };
   }
   
-  function mapDispatchToProps(dispatch) {
+ export function mapDispatchToProps(dispatch) {
     return {
       appActions: bindActionCreators(myActions, dispatch)
     };
@@ -19,12 +21,12 @@ function mapStateToProps(state) {
 
 
   
-const MemoryGameContainer = connect(
+const RappersContainer = connect(
     mapStateToProps,
     mapDispatchToProps
   )(RapperInfo)
   
-  export default MemoryGameContainer;
+  export default RappersContainer;
   
   
   

@@ -13,11 +13,6 @@ import BowlingGameContainer from '../../containers/bowling';
 import RappersContainer from '../../containers/rappers';
 
 class App extends Component {
-
-  onComponentDidMount() {
-
-  }
-  
   gameSelectionButtons() {
     return (
       <div> 
@@ -40,7 +35,7 @@ class App extends Component {
       <div className={styles.app}>
         <Navbar>
           <NavbarGroup align={Alignment.LEFT}>
-            <NavbarHeading>Roy's Room</NavbarHeading>
+            <NavbarHeading>Roy's Stuff</NavbarHeading>
             <NavbarDivider />
             {this.gameSelectionButtons()}
           </NavbarGroup>

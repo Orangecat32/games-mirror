@@ -1,7 +1,11 @@
+import {SORT_NAME_DEC} from '../components/Rappers/constants';
 
 export const init = () => (
     { 
-        artists:[],
         errorMessage: null,
-        isLoading: false
+        isLoading: false,
+        showActive: false,
+        zodiacFilter: '',
+        searchFilter: '',
+        sortMode: SORT_NAME_DEC
     });
