@@ -13,8 +13,6 @@ export const rappersSortMode = (m) => ({type: RAPPERS_SORT_MODE, payload: m});
 export const searchRappers = (s) => ({type: RAPPERS_SEARCH, payload: s});
 export const rappersViewMode = (v) => ({type: RAPPERS_VIEW_MODE, payload: v});
 
-//export const requestRappers = () => ({type: RAPPERS_REQUEST_ARTISTS, payload: []});
-
 export const requestRappers = () => (dispatch, getState) => {
   const s = getState().rappers;
   if(s.isLoading === true) {

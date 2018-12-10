@@ -35,6 +35,7 @@ export const Card = (props) => {
 Card.propTypes = {
   name: PropTypes.string,
   birthDate: PropTypes.object,
-  active: PropTypes.bool
+  active: PropTypes.bool,
+  songs: PropTypes.array
 }
 

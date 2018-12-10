@@ -1,7 +1,7 @@
 
 import {createSelector} from 'reselect';
 import {isNullOrWhitespace} from '../shared/utils';
-import {dateRangeFilter, activeFilter, sortArtists} from '../components/Rappers/util';
+import {activeFilter, sortArtists} from '../components/Rappers/util';
 
 import * as RA from "../actions/rappersActions";
 
@@ -10,7 +10,8 @@ export function rappersReducer(state, action) {
     case RA.RAPPERS_ARTISTS_BEGIN:
       return Object.assign(state, {isLoading: action.payload, error: null }); 
     case RA.RAPPERS_ARTISTS_FAILED:
-      return Object.assign(state, {failed: action.payload, artists: [], isLoading: false }); 
+      const message = action.payload && action.payload.message ? action.payload.message : 'error fetching data';
+      return Object.assign(state, {error: message , artists: [], isLoading: false }); 
     case RA.RAPPERS_ARTISTS_SUCCESS:
       return Object.assign(state, {data: action.payload, error: null, isLoading: false }); 
     case RA.RAPPERS_TOGGLE_ACTIVE:
@@ -49,7 +50,6 @@ export default rappersReducer;
   const filterArtist = (a, f) => {
     return (isNullOrWhitespace(f.search) ? true : a.search.includes(f.search)) &&
       (isNullOrWhitespace(f.sign) ? true : a.sign === f.sign) &&
-      dateRangeFilter(f.ageLow, f.ageHigh, a.birthDate) &&
       activeFilter(f.active, a.active);
   };
 
@@ -68,5 +68,4 @@ export default rappersReducer;
     return filteredArtistsEx(enrichedArtists, filters, sortMode);
   });
 
-  export const allArtistsCount = createSelector([allArtists], items => (items || []).length);
  

@@ -1,8 +1,8 @@
 
 
 import {mapStateToProps} from "./RapperApp";
-import {initialState} from '../../store';
-import data from '../../mock/rappers.json'
+import {initialState} from '../../../store';
+import data from '../../../mock/rappers.json'
 
 
 

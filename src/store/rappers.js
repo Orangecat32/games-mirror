@@ -2,7 +2,7 @@ import {SORT_NAME_DEC, VIEW_CARDS} from '../components/Rappers/constants';
 
 export const init = () => (
     { 
-        errorMessage: null,
+        error: null,
         isLoading: false,
         showActive: false,
         zodiacFilter: '',

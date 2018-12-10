@@ -2,15 +2,6 @@ import moment from 'moment';
 import {isValidDate} from '../../shared/utils';
 import { SORT_NAME_DEC, SORT_NAME_ASC,  SORT_AGE_DEC, SORT_AGE_ASC } from './constants';
 
-// return true if there is no filter or there is a filter and date within the range
-export const dateRangeFilter = (low, high, date) => {
-  if(!low && !high) {
-    return true;
-  }
-
-  return true;
-};
-
 // return false for inactive artist, if filter is false
 export const activeFilter = (f, isArtistActive) => !(isArtistActive === false && f === true);
 

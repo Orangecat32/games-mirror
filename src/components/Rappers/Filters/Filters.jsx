@@ -6,7 +6,6 @@ import * as FF from "../constants";
 
 import styles from './Filters.scss';
 
-// 
 
 const buildMenu = (props) => {
   return (
@@ -17,10 +16,7 @@ const buildMenu = (props) => {
             text="Active" 
             active={props.showActive}
             disabled={false}
-            onClick={() => {
-                console.log('click');
-                props.appActions.rappersToggleActive();
-              }
+            onClick={() => {props.appActions.rappersToggleActive();}
             } 
           />
         <MenuItem text="Birth Sign"  disabled={true} />
@@ -67,18 +63,10 @@ export class Filters extends React.Component {
 };
 
 Filters.propTypes = {
- 
+  searchFilter:  PropTypes.string,
+  showActive: PropTypes.bool,
+  viewMode: PropTypes.string,
+  sortMode: PropTypes.string
 }
 
 export default Filters;
-
-/*
-      <Button text="Refresh" onClick={() => props.appActions.requestRappers()} />
- <Switch 
-        checked={props.showActive} 
-        label="Active" 
-        style={{marginTop:'6px'}}
-        onChange={() => props.appActions.rappersToggleActive()}
-      />
-
-*/

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from "react-redux";
-import { Alignment, Spinner, Navbar, NavbarDivider, Button, NavbarGroup,  NavbarHeading, Classes} from "@blueprintjs/core";
+import { Alignment, Spinner, Navbar, NavbarDivider, NavbarGroup,  NavbarHeading} from "@blueprintjs/core";
 
 import * as myActions from "../../../actions/rappersActions";
 import {filteredArtists} from "../../../reducers/rappersReducer";
@@ -16,8 +16,6 @@ class RapperApp extends Component {
   componentDidMount() {
     this.props.appActions.requestRappers();
   }
-  
-
 
   render() {
     return (
