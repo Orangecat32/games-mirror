@@ -1,15 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types'; 
-import moment from 'moment';
-import {isValidDate} from '../../../shared/utils';
+
+import {ageDisplay} from '../util';
 import styles from './Cards.scss';
 
 
 export const Card = (props) => {
-  const age = isValidDate(props.birthDate) 
-    ? `${moment().diff(props.birthDate, 'years')}` 
-    : `?`;
-
   const status = props.active === true ? 'Active' 
     : props.active === false ? 'Inactive' : 'Unknown';
 
@@ -24,7 +20,7 @@ export const Card = (props) => {
             {`${status}`}
           </div>
           <div>
-            {`Age:${age}`}
+            {`Age:${ageDisplay(props.birthDate)}`}
           </div>
          
         </div>

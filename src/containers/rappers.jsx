@@ -3,7 +3,7 @@ import {bindActionCreators} from 'redux';
 import {connect} from "react-redux";
 
 import * as myActions from "../actions/rappersActions.js";
-import {RapperInfo} from "../components/Rappers/ArtistList/RapperInfo";
+import {ArtistList} from "../components/Rappers/ArtistList/ArtistList";
 import {filteredArtists} from "../reducers/rappersReducer";
 
 export function mapStateToProps(state) {
@@ -24,7 +24,7 @@ export function mapStateToProps(state) {
 const RappersContainer = connect(
     mapStateToProps,
     mapDispatchToProps
-  )(RapperInfo)
+  )(ArtistList)
   
   export default RappersContainer;
   

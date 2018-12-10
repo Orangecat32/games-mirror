@@ -19,6 +19,8 @@ export function rappersReducer(state, action) {
       return Object.assign({}, state, {searchFilter: action.payload});
     case RA.RAPPERS_SORT_MODE:
       return Object.assign({}, state, {sortMode: action.payload});
+      case RA.RAPPERS_VIEW_MODE:
+      return Object.assign({}, state, {viewMode: action.payload});
     default: 
       return state;
   }

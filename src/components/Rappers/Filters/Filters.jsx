@@ -25,6 +25,10 @@ const buildMenu = (props) => {
           />
         <MenuItem text="Birth Sign"  disabled={true} />
       </MenuItem>
+      <MenuItem icon="list-columns" text="View">
+        <MenuItem text="Cards" onClick={() => props.appActions.rappersViewMode(FF.VIEW_CARDS)} active={props.viewMode === FF.VIEW_CARDS } />
+        <MenuItem text="Table" onClick={() => props.appActions.rappersViewMode(FF.VIEW_TABLE)} active={props.viewMode === FF.VIEW_TABLE }/>
+      </MenuItem>
       <MenuItem icon="sort" text="Sort">
         <MenuItem text="Age Decending" onClick={() => props.appActions.rappersSortMode(FF.SORT_AGE_DEC)} active={props.sortMode === FF.SORT_AGE_DEC } />
         <MenuItem text="Age Acending" onClick={() => props.appActions.rappersSortMode(FF.SORT_AGE_ASC)} active={props.sortMode === FF.SORT_AGE_ASC }/>

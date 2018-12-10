@@ -3,13 +3,13 @@
 
 // import React from 'react';
 // import renderer from 'react-test-renderer'; 
-// import RapperInfo from './RapperInfo';
+// import ArtistList from './ArtistList';
 
 
 test(' display test', () => {
 
     // const tree = renderer.create(
-    //     <RapperInfo searchFilter="xyz" />
+    //     <ArtistList searchFilter="xyz" />
     // );
 
     // expect(tree.toJSON).toMatchSnapshot();

@@ -6,10 +6,12 @@ export const RAPPERS_ARTISTS_SUCCESS = 'RAPPERS_ARTISTS_SUCCESS';
 export const RAPPERS_SORT_MODE = 'RAPPERS_SORT_MODE';
 export const RAPPERS_TOGGLE_ACTIVE = 'RAPPERS_TOGGLE_ACTIVE';
 export const RAPPERS_SEARCH = 'RAPPERS_SEARCH';
+export const RAPPERS_VIEW_MODE = 'RAPPERS_VIEW_MODE';
 
 export const rappersToggleActive = () => ({type: RAPPERS_TOGGLE_ACTIVE});
 export const rappersSortMode = (m) => ({type: RAPPERS_SORT_MODE, payload: m});
 export const searchRappers = (s) => ({type: RAPPERS_SEARCH, payload: s});
+export const rappersViewMode = (v) => ({type: RAPPERS_VIEW_MODE, payload: v});
 
 //export const requestRappers = () => ({type: RAPPERS_REQUEST_ARTISTS, payload: []});
 

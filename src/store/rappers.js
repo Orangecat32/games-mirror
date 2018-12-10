@@ -1,4 +1,4 @@
-import {SORT_NAME_DEC} from '../components/Rappers/constants';
+import {SORT_NAME_DEC, VIEW_CARDS} from '../components/Rappers/constants';
 
 export const init = () => (
     { 
@@ -7,5 +7,6 @@ export const init = () => (
         showActive: false,
         zodiacFilter: '',
         searchFilter: '',
+        viewMode: VIEW_CARDS,
         sortMode: SORT_NAME_DEC
     });

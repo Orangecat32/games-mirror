@@ -32,10 +32,10 @@ export const ScorePanel = (clickHistory) => {
           <div className={styles.title}>Lucky</div>
           <div className={styles.data}>{`${score.luck.map(c => c.name).join(', ')}`}</div> 
         </div>
-        <div className={styles.row}>
+        {/* <div className={styles.row}>
           <div className={styles.title}>Max Clicks</div>
           <div className={styles.data}>{`${score.maxSeen > 0 ? score.maxSeen : '' }`}</div> 
-        </div>
+        </div> */}
       </div>
     </div>
     )

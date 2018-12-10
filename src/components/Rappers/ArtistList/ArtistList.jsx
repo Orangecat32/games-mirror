@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types'; 
-import styles from './RapperInfo.scss';
+import styles from './ArtistList.scss';
 import {Card} from './Cards';
 
 
-export class RapperInfo extends React.Component {
+export class ArtistList extends React.Component {
   render() {
     const { filteredArtists } = this.props;
     return (
@@ -15,8 +15,8 @@ export class RapperInfo extends React.Component {
   }
 }
 
-RapperInfo.propTypes = {
+ArtistList.propTypes = {
   filteredArtists: PropTypes.array,
 };
 
-export default RapperInfo;
+export default ArtistList;

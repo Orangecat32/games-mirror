@@ -6,11 +6,11 @@ import { Alignment, Spinner, Navbar, NavbarDivider, Button, NavbarGroup,  Navbar
 import * as myActions from "../../../actions/rappersActions";
 import {filteredArtists} from "../../../reducers/rappersReducer";
 import styles from './RapperApp.scss';
-import RapperInfo from '../ArtistList/RapperInfo';
+import ArtistList from '../ArtistList/ArtistList';
+import ArtistTable from '../ArtistTable/ArtistTable';
 import {isNullOrWhitespace} from '../../../shared/utils';
 import Filters from '../Filters/Filters';
-
-
+import {VIEW_CARDS, VIEW_TABLE} from '../constants';
 
 class RapperApp extends Component {
   componentDidMount() {
@@ -44,7 +44,13 @@ class RapperApp extends Component {
             </div>
 
             <div className={styles.dataArea}>
-              <RapperInfo {...this.props} />   
+              {this.props.viewMode === VIEW_CARDS &&
+              <ArtistList {...this.props} />   
+              }
+               {this.props.viewMode === VIEW_TABLE &&
+              <ArtistTable {...this.props} />   
+              }
+
             </div>
           </div>    
         }

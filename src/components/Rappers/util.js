@@ -1,3 +1,5 @@
+import moment from 'moment';
+import {isValidDate} from '../../shared/utils';
 import { SORT_NAME_DEC, SORT_NAME_ASC,  SORT_AGE_DEC, SORT_AGE_ASC } from './constants';
 
 // return true if there is no filter or there is a filter and date within the range
@@ -26,6 +28,9 @@ export const sortArtists = (a, b, sortMode) => {
       return 0;
   }
 };
+
+export const ageDisplay = (birthdate) => 
+  (isValidDate(birthdate) ? `${moment().diff(birthdate, 'years')}` : `?`);
 
 
 
