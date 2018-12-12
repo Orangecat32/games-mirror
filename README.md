@@ -14,24 +14,28 @@ React Components for playing simple games
     - Component layer added. Store shaped for multiple components.
     - Thunk middleware added
     - gh-pages deployment
-
+    - auto-play with statistics collection
+    
 - Future features: 
     - Add more games
     - multi-player mode
-    - auto-play with statistics collection
     - dashboard for statistics display
-    - Add some tests
     - etc...
 
 
 
-- Bowling Game Screen 
+# Bowling Game Screen 
 
     ![Screen Shot](/documentation/bowling.png?raw=true "Screen Shot")
 
 
 
 
-- Memory Game Screen 
+# Memory Game Screen 
 
     ![Screen Shot](/documentation/memory.png?raw=true "Screen Shot")
+
+
+# Running tests
+    - A few sample tests have been implemented.  The tests do not cover all code or every situation that should be tested in a production app. 
+    - To run the tests, execute 'yarn test' (or npm test) from the command prompt

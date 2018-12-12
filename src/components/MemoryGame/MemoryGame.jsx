@@ -6,9 +6,9 @@ import {gameDescription} from './constants';
 import {GameControl} from './GameControl/GameControl';
 import {Gameboard} from './Gameboard/Gameboard';
 import styles from './MemoryGame.scss';
-import {Rules} from '../../shared/components/GameRules/Rules.js';
+import {Rules} from '../../shared/components/GameRules/Rules';
 import {isGameComplete} from './utils';
-import {ScorePanel} from './ScorePanel/ScorePanel.js'
+import {ScorePanel} from './ScorePanel/ScorePanel'
 
 export class MemoryGame extends React.Component {
   render() {

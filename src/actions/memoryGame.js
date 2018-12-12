@@ -29,7 +29,7 @@ export const clickCard = card => (dispatch, getState) => {
   }
 }
 
-export const autoplayMode = mode => (dispatch, getState) => {
+export const autoplayMode = () => (dispatch, getState) => {
   dispatch({type: MEMORY_AUTOPLAY_MODE, payload: !getState().memoryGame.autoplayMode});
 
   let timer = null;
