@@ -11,7 +11,7 @@ export class GameControl extends React.Component {
     return (
       <div className={styles.memoryGameControls}>
         <Button text="Restart" onClick={() => this.props.appActions.startGame()} />
-        {`Click Count: ${this.props.clickCount}`}
+        {`Clicks: ${this.props.clickCount}`}
         <Switch 
           checked={this.props.showAll} 
           label="Show All" 

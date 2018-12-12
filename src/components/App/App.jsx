@@ -4,12 +4,12 @@ import {connect} from "react-redux";
 import PropTypes from 'prop-types'; 
 import { Button } from "@blueprintjs/core";
 
-import * as myActions from "./actions/index";
+import * as myActions from "../../actions/index";
 import { Alignment, Classes, Navbar, NavbarDivider,  NavbarGroup,  NavbarHeading} from "@blueprintjs/core";
 import styles from './App.scss';
 import * as constants from './constants.js';
-import MemoryGameContainer from './containers/memory.js';
-import BowlingGameContainer from './containers/bowling.js';
+import MemoryGameContainer from '../../containers/memory';
+import BowlingGameContainer from '../../containers/bowling';
 
 class App extends Component {
   gameSelectionButtons() {
@@ -32,10 +32,9 @@ class App extends Component {
   render() {
     return (
       <div className={styles.app}>
-    
         <Navbar>
           <NavbarGroup align={Alignment.LEFT}>
-            <NavbarHeading>Game Room</NavbarHeading>
+            <NavbarHeading>Roy's Stuff</NavbarHeading>
             <NavbarDivider />
             {this.gameSelectionButtons()}
           </NavbarGroup>

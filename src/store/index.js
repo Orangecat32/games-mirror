@@ -4,7 +4,7 @@ import { createLogger } from 'redux-logger'
 
 import * as memoryGame from './memory';
 import * as bowlingGame from './bowling';
-import * as appConstants from '../constants';
+import * as appConstants from '../components/App/constants';
 
 import reducer from "../reducers";
 
