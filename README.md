@@ -25,17 +25,17 @@ React Components for playing simple games
 
 
 # Bowling Game Screen 
-
+- 
     ![Screen Shot](/documentation/bowling.png?raw=true "Screen Shot")
 
 
 
 
 # Memory Game Screen 
-
+- 
     ![Screen Shot](/documentation/memory.png?raw=true "Screen Shot")
 
 
 # Running tests
-    - A few sample tests have been implemented.  The tests do not cover all code or every situation that should be tested in a production app. 
+     - A few sample tests have been implemented.  These do not cover all code or every situation in a production app. 
     - To run the tests, execute 'yarn test' (or npm test) from the command prompt
