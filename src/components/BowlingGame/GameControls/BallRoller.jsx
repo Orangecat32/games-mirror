@@ -8,7 +8,9 @@ import {availablePins} from '../utils.js';
 export const BallRoller = (props) => {
   const frame = props.frame;
   const pins = Array.from({length: availablePins(frame) + 1}, (v, k) => k++)
-              .map(p => <Button className={styles.pinButton}
+              .map(p => <Button 
+                    className={styles.pinButton} 
+                    style={{minWidth: '27px', minHeight: '27px', padding: '3px 7px'}}
                     text={p} 
                     key={p} 
                     onClick={() => props.appActions.rollBowlingBall(p)} 
