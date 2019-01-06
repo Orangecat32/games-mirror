@@ -34,7 +34,7 @@ class App extends Component {
       <div className={styles.app}>
         <Navbar>
           <NavbarGroup align={Alignment.LEFT}>
-            <NavbarHeading>Roy's Stuff</NavbarHeading>
+            <NavbarHeading>{"Roy's Stuff"}</NavbarHeading>
             <NavbarDivider />
             {this.gameSelectionButtons()}
           </NavbarGroup>
@@ -55,13 +55,15 @@ class App extends Component {
   }
 }
 
-const UnderConstruction = (props) => (
+const UnderConstruction = (p) => (
   <div className={styles.constructionContainer}>
-   {props.text}
+   {p.text}
   </div>
 );
 
 App.propTypes = {
+  text: PropTypes.string,
+  appActions: PropTypes.func,
   selectedGame: PropTypes.string
 };
 

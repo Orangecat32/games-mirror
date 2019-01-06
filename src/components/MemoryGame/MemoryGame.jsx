@@ -10,10 +10,10 @@ import {Rules} from '../../shared/components/GameRules/Rules';
 import {isGameComplete} from './utils';
 import {ScorePanel} from './ScorePanel/ScorePanel'
 
-export class MemoryGame extends React.Component {
-  render() {
-    return (
-      <div className={styles.container} >
+export class MemoryGame extends React.Component {
+  render(){
+    return(
+      <div className={styles.container} >
         <div className={styles.rulesContainer}>
           <Rules content={gameDescription()} show={this.props.showRules} onClick={() => this.props.appActions.memoryToggleRules()}/>   
         </div>
@@ -27,9 +27,9 @@ export class MemoryGame extends React.Component {
         }
         <GameControl {...this.props} />
         <Gameboard {...this.props} />
-      </div>
-    );
-  }
+  </div>
+  );
+}
 }
 
 MemoryGame.propTypes = {

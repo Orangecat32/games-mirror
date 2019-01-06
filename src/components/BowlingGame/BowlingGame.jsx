@@ -7,10 +7,10 @@ import {Scorecard} from './Scorecard/Scorecard';
 import {Rules} from '../../shared/components/GameRules/Rules';
 import * as styles from './BowlingGame.scss';
 
-export class BowlingGame extends React.Component {
-  render() {
-    return (
-      <div className={styles.container}>
+export class BowlingGame extends React.Component {
+  render(){
+    return(
+      <div  className={styles.container}>
         <Rules 
           content={gameDescription()} 
           show={this.props.showRules} 
@@ -18,7 +18,7 @@ export class BowlingGame extends React.Component {
         />
         <GameControl {...this.props} />
         <Scorecard {...this.props} /> 
-      </div>
+      </div>
     )
   }
 }

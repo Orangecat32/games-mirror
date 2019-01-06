@@ -7,9 +7,12 @@ import {createCards, clickCard, hasUnmatched} from '../components/MemoryGame/uti
       case START_MEMORY_GAME:
         return Object.assign({}, state, {cards: createCards(action.payload), clickCount: 0, pause: false, history: [] }); 
       case UNFLIP_ALL:
+      {
         const ufc = state.cards.map(c => c.isFlipped ? Object.assign({}, c , {isFlipped: false}) : c);
         return  Object.assign({}, state, {cards: ufc, pause: false });
+      }
       case CLICK_CARD:
+      {
         const clickedCard = action.payload;
         const clickCount = state.clickCount + 1;
         const result = clickCard(state.cards, clickedCard, clickCount);
@@ -26,6 +29,7 @@ import {createCards, clickCard, hasUnmatched} from '../components/MemoryGame/uti
             pause: unmatched,
             history: state.history.concat(result.clickedCard)
           });
+        }
       case SHOW_ALL:
         return Object.assign({}, state, {showAll: !state.showAll});
       case MEMORY_AUTOPLAY_MODE:

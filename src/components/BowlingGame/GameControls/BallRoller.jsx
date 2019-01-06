@@ -30,6 +30,7 @@ export const BallRoller = (props) => {
 
   BallRoller.propTypes = {
     frame: PropTypes.object,
+    appActions: PropTypes.any,
     rollBowlingBall: PropTypes.func
   }
 
