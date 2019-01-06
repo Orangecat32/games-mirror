@@ -22,6 +22,18 @@ export const ScorePanel = (clickHistory) => {
             <td className={styles.colTitle}>Poor</td>
             <td>{`${score.level3.map(c => c.name).join(', ')}`}</td>
           </tr>
+          { score.level4.length > 0 &&
+            <tr>
+              <td className={styles.colTitle}>Very Poor</td>
+              <td>{`${score.level4.map(c => c.name).join(', ')}`}</td>
+            </tr> 
+          }
+          { score.luck.length > 0 &&
+            <tr>
+              <td className={styles.colTitle}>Lucky</td>
+              <td>{`${score.luck.map(c => c.name).join(', ')}`}</td>
+            </tr> 
+          }
         </table>
       </div>
     )
