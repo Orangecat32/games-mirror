@@ -9,34 +9,21 @@ export const ScorePanel = (clickHistory) => {
   return (
     <div className={styles.container} >
       <div className={styles.heading}>Click Efficiency</div>
-      <div className={styles.items}>
-        <div className={styles.row}>
-          <div className={styles.title}>Excellent</div>
-          <div className={styles.data}>{`${score.level1.map(c => c.name).join(', ')}`}</div>
-        </div>
-        <div className={styles.row}>
-          <div className={styles.title}>Good</div>
-          <div className={styles.data}>{`${score.level2.map(c => c.name).join(', ')}`}</div>
-        </div>
-        <div className={styles.row}>
-          <div className={styles.title}>Poor</div>
-          <div className={styles.data}>{`${score.level3.map(c => c.name).join(', ')}`}</div>
-        </div>
-        { score.level4.length > 0 &&
-          <div className={styles.row}>
-            <div className={styles.title}>Very Poor</div>
-            <div className={styles.data}>{`${score.level4.map(c => c.name).join(', ')}`}</div>
-          </div>
-        }
-        <div className={styles.row}>
-          <div className={styles.title}>Lucky</div>
-          <div className={styles.data}>{`${score.luck.map(c => c.name).join(', ')}`}</div> 
-        </div>
-        {/* <div className={styles.row}>
-          <div className={styles.title}>Max Clicks</div>
-          <div className={styles.data}>{`${score.maxSeen > 0 ? score.maxSeen : '' }`}</div> 
-        </div> */}
+        <table>
+          <tr>
+            <td className={styles.colTitle}>Excellent</td>
+            <td>{`${score.level1.map(c => c.name).join(', ')}`}</td>
+          </tr>
+          <tr>
+            <td className={styles.colTitle}>Good</td>
+            <td>{`${score.level2.map(c => c.name).join(', ')}`}</td>
+          </tr>
+          <tr>
+            <td className={styles.colTitle}>Poor</td>
+            <td>{`${score.level3.map(c => c.name).join(', ')}`}</td>
+          </tr>
+        </table>
       </div>
-    </div>
     )
 };
+

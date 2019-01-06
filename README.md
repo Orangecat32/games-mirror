@@ -7,14 +7,15 @@ React Components for playing simple games
 
  - [Click here to run the application](https://orangecat32.github.io/games-mirror/)
 
- - Framework History:
+ - Application History:
     - This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
     - Webpack was modified webpack for locally scoped css class names.
-    - Redux added. 
+    - Redux added.
     - Component layer added. Store shaped for multiple components.
     - Thunk middleware added
     - gh-pages deployment
     - auto-play with statistics collection
+    - jest tests
     
 - Future features: 
     - Add more games
@@ -37,5 +38,5 @@ React Components for playing simple games
 
 
 # Running tests
-     - A few sample tests have been implemented.  These do not cover all code or every situation in a production app. 
-    - To run the tests, execute 'yarn test' (or npm test) from the command prompt
+ - A few sample tests have been implemented.  These do not cover all code or every situation in a production app. 
+ - To run the tests, execute 'yarn test' (or npm test) from the command prompt
