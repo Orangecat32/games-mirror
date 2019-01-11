@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/games-mirror/precache-manifest.3b3b2e395a098679a1885cf853e76989.js"
+  "/games-mirror/precache-manifest.36083101b93644463cadc60b5d81c2f6.js"
 );
 
 workbox.clientsClaim();
