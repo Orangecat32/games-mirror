@@ -1,10 +1,10 @@
 
   .gameBoardContainer{
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    flex: 1;
-    width: 84vmin;
+    flex-direction: row;
+    align-items: flex-start;
+    flex: 1 1;
+    justify-content: center;
   }
 
   .gameBoard {
@@ -17,11 +17,11 @@
 
   .memoryCard {
     border: 2px solid gray;
-    border-radius: 5px;
+    border-radius: 10px;
     background-color: deepskyblue;
     display: flex;
-    width: 14vmin;
-    height: 14vmin;
+    width: 15vmin;
+    height: 15vmin;
   }
 
   .flipped {
@@ -38,4 +38,5 @@
     justify-content: center;
     align-items: center;
     flex: 1;
+    border-radius: 10px;
   }

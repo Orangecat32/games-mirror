@@ -12,44 +12,34 @@ import MemoryGameContainer from '../../containers/memory';
 import BowlingGameContainer from '../../containers/bowling';
 
 class App extends Component {
-  gameSelectionButtons() {
-    return (
-      <div> 
-      {
-        constants.AvailableGames.map(g => (
-          <Button 
-            key={g}
-            className={Classes.MINIMAL} 
-            active={this.props.selectedGame === g}
-            text={g} 
-            onClick={()=> this.props.appActions.selectGame(g)} />
-        ))
-      }
-      </div>
-    );
-  }
-
   render() {
     return (
       <div className={styles.app}>
         <Navbar>
           <NavbarGroup align={Alignment.LEFT}>
-            <NavbarHeading>{"Roy's Stuff"}</NavbarHeading>
+            <NavbarHeading>{"Games"}</NavbarHeading>
             <NavbarDivider />
-            {this.gameSelectionButtons()}
+            {
+              constants.AvailableGames.map(g => (
+                <Button 
+                  key={g}
+                  className={Classes.MINIMAL} 
+                  active={this.props.selectedGame === g}
+                  text={g} 
+                  onClick={()=> this.props.appActions.selectGame(g)} />
+              ))
+            }
           </NavbarGroup>
         </Navbar>
-        <div className={styles.gameContainer}>
-          {this.props.selectedGame === constants.MEMORY_GAME &&
-            <MemoryGameContainer />
-          }
-          {this.props.selectedGame === constants.BOWLING_GAME &&
-            <BowlingGameContainer />
-          }
-          {this.props.selectedGame === constants.MAZE_GAME &&
-            <UnderConstruction text={`${this.props.selectedGame} is under construction`} />
-          } 
-        </div>   
+        {this.props.selectedGame === constants.MEMORY_GAME &&
+          <MemoryGameContainer />
+        }
+        {this.props.selectedGame === constants.BOWLING_GAME &&
+          <BowlingGameContainer />
+        }
+        {this.props.selectedGame === constants.MAZE_GAME &&
+          <UnderConstruction text={`${this.props.selectedGame} is under construction`} />
+        } 
       </div>
     );
   }
@@ -63,7 +53,7 @@ const UnderConstruction = (p) => (
 
 App.propTypes = {
   text: PropTypes.string,
-  appActions: PropTypes.func,
+  appActions: PropTypes.object,
   selectedGame: PropTypes.string
 };
 

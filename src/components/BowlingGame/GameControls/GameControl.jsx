@@ -32,6 +32,7 @@ export const GameControl = (props) => {
 
 GameControl.propTypes = {
   frames: PropTypes.array,
+  appActions: PropTypes.any,
   rollBowlingBall: PropTypes.func,
   newBowlingGame: PropTypes.func
 }

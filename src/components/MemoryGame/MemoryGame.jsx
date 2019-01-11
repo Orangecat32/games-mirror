@@ -13,7 +13,7 @@ import {ScorePanel} from './ScorePanel/ScorePanel'
 export class MemoryGame extends React.Component {
   render(){
     return(
-      <div className={styles.container} >
+      <div className={styles.container}>
         <div className={styles.rulesContainer}>
           <Rules content={gameDescription()} show={this.props.showRules} onClick={() => this.props.appActions.memoryToggleRules()}/>   
         </div>
@@ -27,7 +27,7 @@ export class MemoryGame extends React.Component {
         }
         <GameControl {...this.props} />
         <Gameboard {...this.props} />
-  </div>
+      </div>
   );
 }
 }
@@ -36,9 +36,11 @@ MemoryGame.propTypes = {
   showAll: PropTypes.bool,
   cards: PropTypes.array,
   onClick: PropTypes.func,
+  appActions: PropTypes.any,
   unflipAll: PropTypes.func,
   autoplayMode: PropTypes.bool,
   showRules: PropTypes.bool,
+  history: PropTypes.array,
   memoryToggleRules: PropTypes.func
 };
 

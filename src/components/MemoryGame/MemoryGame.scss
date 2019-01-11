@@ -1,89 +1,30 @@
 
-  .container {
-    display: flex;
-    flex: 1 1;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-   // background-color: whitesmoke;
-   min-width: 300px;
-  }
+.container {
+  height: calc(100vh - 50px);
+  display: flex;
+  min-height: 200px;
+  overflow-y: auto;
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
-  .gameBoard {
-    display: grid; 
-    grid-template-columns: repeat(6, 1fr);
-    grid-gap: .15rem;
-    margin: 2vmin;
-    width: 100%;
-  }
+.rulesContainer {
+  display: flex;
+  width: 90%;
+}
 
+.gameOver {
+  font-size: calc(15px + 2vmin);
+  font-weight: 500;
+  display: flex;
+  justify-content: center;
+  margin: 6px;
+  align-items: center;
+}
 
-  .gameBoardContainer{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    flex: 1;
-    width: 84vmin;
-  }
-
-
-  .gameOver {
-    font-size: calc(15px + 2vmin);
-    font-weight: 500;
-    display: flex;
-    justify-content: center;
-    margin: 6px;
-    align-items: center;
-  }
-
-  .gameDescription {
-    margin: 2vmin;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-  }
-
-  .memoryGameControls {
-    height: 30px;
-    width: 90%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-items: center;
-  }
-
-  .memoryCard {
-    border: 2px solid gray;
-    border-radius: 5px;
-    background-color: deepskyblue;
-    display: flex;
-    width: 14vmin;
-    height: 14vmin;
-  }
-
-  .flipped {
-    background-color: rgb(201, 201, 103);
-  }
-
- .matched {
-    background-color: lightgray;
-    color:whitesmoke;
-  }
-
-  .cardIcon {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex: 1;
-  }
-
-  .rulesContainer {
-    margin-left: 10%;
-    display: flex;
-    width: 90%;
-  }
-
-  .infoIcon {
-    margin-bottom: 8px;
-    margin-left: 8px;
-  }
+.infoIcon {
+  margin-bottom: 8px;
+  margin-left: 8px;
+}

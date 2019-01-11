@@ -9,7 +9,7 @@ export const ScorePanel = (clickHistory) => {
   return (
     <div className={styles.container}>
       <div className={styles.heading}>Click Efficiency</div>
-        <table>
+        <table><tbody>
           <tr>
             <td className={styles.colTitle}>Excellent</td>
             <td>{`${score.level1.map(c => c.name).join(', ')}`}</td>
@@ -34,7 +34,7 @@ export const ScorePanel = (clickHistory) => {
               <td>{`${score.luck.map(c => c.name).join(', ')}`}</td>
             </tr> 
           }
-        </table>
+        </tbody></table>
       </div>
     )
 };

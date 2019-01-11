@@ -25,8 +25,10 @@ export class BowlingGame extends React.Component {
 
 BowlingGame.propTypes = {
   frames: PropTypes.array,
+  showRules: PropTypes.bool,
   rollBowlingBall: PropTypes.func,
   newBowlingGame: PropTypes.func,
+  appActions: PropTypes.any,
   bowlingToggleRules: PropTypes.func
 }
 

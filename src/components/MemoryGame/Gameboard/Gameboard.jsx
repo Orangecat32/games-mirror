@@ -39,6 +39,7 @@ const MemoryCard = (p) => {
 
 Gameboard.propTypes = {
   cards: PropTypes.array,
+  appActions: PropTypes.object,
   showAll: PropTypes.bool
 };
 
